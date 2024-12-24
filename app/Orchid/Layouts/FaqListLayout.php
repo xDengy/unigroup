@@ -5,6 +5,7 @@
     use App\Models\Faq;
     use Orchid\Screen\Actions\Link;
     use Orchid\Screen\Fields\Input;
+    use Orchid\Screen\Fields\Select;
     use Orchid\Screen\Layouts\Table;
     use Orchid\Screen\TD;
 
@@ -17,7 +18,10 @@
                 TD::make('name', 'Название')->render(function (Faq $el) {
                     return Link::make($el->name)->route('platform.faqs.editItem', $el);
                 }),
-                TD::make('active', 'Активность')->filter(Input::make()),
+                TD::make('active', 'Активность')->filter(Select::make()->options([
+                    'Нет',
+                    'Да'
+                ])),
                 TD::make('sort', 'Сортировка')->sort(),
             ];
         }

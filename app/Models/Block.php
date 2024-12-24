@@ -7,6 +7,7 @@
     use Orchid\Attachment\Attachable;
     use Orchid\Filters\Filterable;
     use Orchid\Filters\Types\Like;
+    use Orchid\Filters\Types\Where;
     use Orchid\Metrics\Chartable;
     use Orchid\Screen\AsSource;
 
@@ -27,11 +28,12 @@
 
         protected $allowedFilters = [
             'name' => Like::class,
-            'code' => Like::class
+            'code' => Like::class,
+            'active' => Where::class
         ];
 
         public function photos()
         {
-            return $this->hasMany(Block::class)->where('group', 'blocks');
+            return $this->hasMany(Portfolio::class)->where('group', 'blocks');
         }
     }

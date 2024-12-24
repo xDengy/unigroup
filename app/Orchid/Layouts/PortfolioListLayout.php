@@ -2,21 +2,21 @@
 
     namespace App\Orchid\Layouts;
 
-    use App\Models\Partner;
+    use App\Models\Portfolio;
     use Orchid\Screen\Actions\Link;
-    use Orchid\Screen\Fields\Input;
     use Orchid\Screen\Fields\Select;
+    use Orchid\Screen\Fields\Input;
     use Orchid\Screen\Layouts\Table;
     use Orchid\Screen\TD;
 
-    class PartnerListLayout extends Table
+    class PortfolioListLayout extends Table
     {
-        protected $target = 'partners'; // таблица
+        protected $target = 'portfolios'; // таблица
         protected function columns(): array
         {
             return [
-                TD::make('name', 'Название')->render(function (Partner $el) {
-                    return Link::make($el->name)->route('platform.partners.editItem', $el);
+                TD::make('name', 'Название')->render(function (Portfolio $el) {
+                    return Link::make($el->name)->route('platform.portfolios.editItem', $el);
                 }),
                 TD::make('active', 'Активность')->filter(Select::make()->options([
                     'Нет',

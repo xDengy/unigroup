@@ -1,47 +1,36 @@
 @extends('layout')
-@section('title')
-    {{$page['title']}}
-@endsection
-@section('description')
-    {{$page['description']}}
-@endsection
-@section('keywords')
-    {{$page['keywords']}}
-@endsection
-
-@section('styles')
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-@endsection
 
 @section('body')
-    <section class="banner">
-        <div class="container">
-            <div class="banner-wrapper">
-                @php
-                    $pageTitle = str_replace('-', '<span class="slash"></span>', $page['h1'])
-                @endphp
-                <h1>
-                    @php echo $pageTitle; @endphp
-                </h1>
+    @if( !empty($blocks['banner']) )
+        <section class="banner">
+            <div class="container">
+                <div class="banner-wrapper">
+                    @php
+                        $pageTitle = str_replace('-', '<span class="slash"></span>', $page['h1'])
+                    @endphp
+                    <h1>
+                        @php echo $pageTitle; @endphp
+                    </h1>
+                </div>
             </div>
-        </div>
-        <div class="banner-textarea container">
-            <div class="banner-text">
-                @php echo html_entity_decode($blocks['banner']['text']); @endphp
+            <div class="banner-textarea container">
+                <div class="banner-text">
+                    @php echo html_entity_decode($blocks['banner']['text']); @endphp
+                </div>
+                <div class="banner-image">
+                    <img src="{{$blocks['banner']['attachment'][0]['url']}}" alt="">
+                    <div class="banner-square"></div>
+                </div>
+                <a href="{{$blocks['banner']['link']}}" class="banner-button">
+                    {{$blocks['banner']['link_text']}}
+                </a>
             </div>
-            <div class="banner-image">
-                <img src="{{$blocks['banner']['attachment'][0]['url']}}" alt="">
-                <div class="banner-square"></div>
+            <div class="banner-strokes">
+                <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
             </div>
-            <a href="{{$blocks['banner']['link']}}" class="banner-button">
-                {{$blocks['banner']['link_text']}}
-            </a>
-        </div>
-        <div class="banner-strokes">
-            <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
-        </div>
-    </section>
-    @if(count($advantages) > 0)
+        </section>
+    @endif
+    @if( !empty($advantages) )
         <section class="trophies">
             <div class="container">
                 <div class="trophies-wrapper">
@@ -59,39 +48,41 @@
             </div>
         </section>
     @endif
-    <section class="projects">
-        <div class="container">
-            <div class="projects-wrapper">
-                <div class="projects-wrapper-top">
-                    <div class="ladder">
-                        <h2 class="ladder-title-background">{{$blocks['projects']['second_name']}}</h2>
-                        <h2 class="ladder-title">{{$blocks['projects']['name']}}</h2>
-                    </div>
-                    <a href="{{$blocks['projects']['link']}}" class="more-button">
-                        {{$blocks['projects']['link_text']}} <img src="{{asset('imgs/arrow.svg')}}" alt="">
-                    </a>
-                </div>
-                <div class="projects-wrapper-bottom">
-                    <div class="project">
-                        <div class="project-image">
-                            <img src="{{asset('imgs/project.png')}}" alt="">
+    @if( !empty($blocks['projects']) )
+        <section class="projects">
+            <div class="container">
+                <div class="projects-wrapper">
+                    <div class="projects-wrapper-top">
+                        <div class="ladder">
+                            <h2 class="ladder-title-background">{{$blocks['projects']['second_name']}}</h2>
+                            <h2 class="ladder-title">{{$blocks['projects']['name']}}</h2>
                         </div>
-                        <div class="project-name">
-                            Жилые комплексы
-                        </div>
-                        <div class="project-description">
-                            Lorem ipsum dolor sit amet consectetur. Suspendisse venenatis lectus elit auctor aenean malesuada lectus in.
-                        </div>
-                        <div class="project-delimiter"></div>
-                        <a href="" class="project-detail">
-                            <img src="{{asset('imgs/projectDetail.svg')}}" alt="">
+                        <a href="{{$blocks['projects']['link']}}" class="more-button">
+                            {{$blocks['projects']['link_text']}} <img src="{{asset('imgs/arrow.svg')}}" alt="">
                         </a>
+                    </div>
+                    <div class="projects-wrapper-bottom">
+                        <div class="project">
+                            <div class="project-image">
+                                <img src="{{asset('imgs/project.png')}}" alt="">
+                            </div>
+                            <div class="project-name">
+                                Жилые комплексы
+                            </div>
+                            <div class="project-description">
+                                Lorem ipsum dolor sit amet consectetur. Suspendisse venenatis lectus elit auctor aenean malesuada lectus in.
+                            </div>
+                            <div class="project-delimiter"></div>
+                            <a href="" class="project-detail">
+                                <img src="{{asset('imgs/projectDetail.svg')}}" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    @if( count($marquees) > 0 )
+        </section>
+    @endif
+    @if( !empty($marquees) )
         <section class="marquee">
             <div class="marquee-wrapper">
                 <div class="marquee-line">
@@ -99,7 +90,6 @@
                         <div class="marquee-text">{{$marquee['name']}}</div>
                     @endforeach
                 </div>
-
                 <div aria-hidden="true" class="marquee-line">
                     @foreach($marquees as $marquee)
                         <div class="marquee-text">{{$marquee['name']}}</div>
@@ -108,35 +98,37 @@
             </div>
         </section>
    @endif
-    <section class="rent">
-        <div class="container">
-            <div class="rent-top">
-                <div class="ladder">
-                    <h2 class="ladder-title-background">{{$blocks['rent']['second_name']}}</h2>
-                    <h2 class="ladder-title">{{$blocks['rent']['name']}}</h2>
+    @if( !empty($blocks['rent']) )
+        <section class="rent">
+            <div class="container">
+                <div class="rent-top">
+                    <div class="ladder">
+                        <h2 class="ladder-title-background">{{$blocks['rent']['second_name']}}</h2>
+                        <h2 class="ladder-title">{{$blocks['rent']['name']}}</h2>
+                    </div>
+                    <a href="{{$blocks['projects']['link']}}" class="more-button">
+                        {{$blocks['projects']['link_text']}} <img src="{{asset('imgs/arrow.svg')}}" alt="">
+                    </a>
                 </div>
-                <a href="{{$blocks['projects']['link']}}" class="more-button">
-                    {{$blocks['projects']['link_text']}} <img src="{{asset('imgs/arrow.svg')}}" alt="">
-                </a>
-            </div>
-            <div class="rent-bottom">
-                <div class="rent-text">
-                    @php echo html_entity_decode($blocks['rent']['text']) @endphp
-                </div>
-            </div>
-        </div>
-        @if (count($blocks['rent']['attachment']) > 0)
-            <div class="rent-image-wrapper">
-                <div class="rent-image-border"></div>
-                <div class="container">
-                    <div class="rent-image">
-                        <img src="{{$blocks['rent']['attachment'][0]['url']}}" alt="">
+                <div class="rent-bottom">
+                    <div class="rent-text">
+                        @php echo html_entity_decode($blocks['rent']['text']) @endphp
                     </div>
                 </div>
             </div>
-        @endif
-    </section>
-    @if( count($blocks['gallery-1']['attachment']) > 0 )
+            @if ( !empty($blocks['rent']['attachment']) )
+                <div class="rent-image-wrapper">
+                    <div class="rent-image-border"></div>
+                    <div class="container">
+                        <div class="rent-image">
+                            <img src="{{$blocks['rent']['attachment'][0]['url']}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </section>
+    @endif
+    @if( !empty($blocks['gallery-1']) && !empty($blocks['gallery-1']['attachment']) )
         @php
             $first = array_shift($blocks['gallery-1']['attachment']);
             $seconds = array_chunk($blocks['gallery-1']['attachment'], 2);
@@ -181,53 +173,27 @@
             </div>
         </section>
     @endif
-    <section class="map">
-        <div class="container">
-            <div class="map-text">
-                @php echo html_entity_decode($blocks['map']['text']) @endphp
+    @if( !empty($blocks['map']) )
+        <section class="map">
+            <div class="container">
+                <div class="map-text">
+                    @php echo html_entity_decode($blocks['map']['text']) @endphp
+                </div>
             </div>
-        </div>
-        @if (count($blocks['map']['attachment']) > 0)
-            <div class="map-image">
-                <img src="{{$blocks['map']['attachment'][0]['url']}}" alt="">
-            </div>
-        @endif
-        <div class="container">
-            <div class="map-title">
-                {{$blocks['map']['name']}}
-            </div>
-        </div>
-    </section>
-    <section class="form">
-        <div class="container">
-            @if (count($blocks['form']['attachment']) > 0)
-                <div class="form-image">
-                    <img src="{{$blocks['form']['attachment'][0]['url']}}" alt="">
+            @if ( !empty($blocks['map']['attachment']) )
+                <div class="map-image">
+                    <img src="{{$blocks['map']['attachment'][0]['url']}}" alt="">
                 </div>
             @endif
-            <form method="post" action="" class="form-form">
-                @csrf
-                <div class="form-title">
-                    {{$blocks['form']['name']}}
+            <div class="container">
+                <div class="map-title">
+                    {{$blocks['map']['name']}}
                 </div>
-                <div class="form-description">
-                    @php echo html_entity_decode($blocks['form']['text']) @endphp
-                </div>
-                <div class="form-fields">
-                    <div class="field">
-                        <input type="text" name="NAME" placeholder="Ваше имя">
-                    </div>
-                    <div class="field">
-                        <input type="tel" name="PHONE" placeholder="+7....">
-                    </div>
-                </div>
-                <div class="form-button">
-                    <input type="submit" name="submit" value="{{$blocks['form']['link_text']}}">
-                </div>
-            </form>
-        </div>
-    </section>
-    @if (count($partners) > 0)
+            </div>
+        </section>
+    @endif
+    @include('form')
+    @if (!empty($partners))
         <section class="partners">
             <div class="container">
                 <div class="partners-wrapper">
@@ -241,7 +207,7 @@
             </div>
         </section>
     @endif
-    @if( count($blocks['gallery-2']['attachment']) > 0 )
+    @if( !empty($blocks['gallery-2']) && !empty($blocks['gallery-2']['attachment']) )
         @php
             $gallery = array_chunk($blocks['gallery-2']['attachment'], 2);
         @endphp
@@ -275,7 +241,7 @@
             </div>
         </section>
     @endif
-    @if (count($reviews) > 0)
+    @if ( !empty($reviews) )
         <section class="reviews">
             <div class="container">
                 <div class="review-top">

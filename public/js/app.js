@@ -41,6 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
     speed: 400,
     loop: true
   });
+  var portfolioSwiper = new Swiper('.page-portfolio .swiper', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: 400,
+    loop: true,
+    navigation: {
+      nextEl: ".portfolio-swiper-button-next",
+      prevEl: ".portfolio-swiper-button-prev"
+    }
+  });
   var faqTitleBlock = document.querySelectorAll('.faq-title-block');
   var _loop = function _loop(_i) {
     faqTitleBlock[_i].addEventListener('click', function () {
@@ -51,6 +61,53 @@ document.addEventListener('DOMContentLoaded', function () {
   for (var _i = 0; _i < faqTitleBlock.length; _i++) {
     _loop(_i);
   }
+  var portfolioVideoButton = document.querySelector('.page-portfolio .video-button');
+  var portfolioVideo = document.querySelector('.page-portfolio video');
+  if (portfolioVideoButton && portfolioVideo) {
+    portfolioVideo.onpause = function () {
+      portfolioVideoButton.parentElement.classList.remove('play');
+      portfolioVideo.removeAttribute('controls');
+    };
+    portfolioVideoButton.addEventListener('click', function () {
+      if (portfolioVideo) {
+        portfolioVideo.setAttribute('controls', true);
+        portfolioVideo.play();
+        portfolioVideoButton.parentElement.classList.add('play');
+      }
+    });
+  }
+
+  // let mapSection = document.querySelector('section.map')
+  // if (mapSection) {
+  //     initMap();
+  //
+  //     async function initMap() {
+  //         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+  //         await ymaps3.ready;
+  //
+  //         const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+  //
+  //         // Иницилиазируем карту
+  //         const map = new YMap(
+  //             // Передаём ссылку на HTMLElement контейнера
+  //             document.getElementById('map'),
+  //
+  //             // Передаём параметры инициализации карты
+  //             {
+  //                 location: {
+  //                     // Координаты центра карты
+  //                     center: [37.588144, 55.733842],
+  //
+  //                     // Уровень масштабирования
+  //                     zoom: 10
+  //                 }
+  //             }
+  //         );
+  //
+  //         // Добавляем слой для отображения схематической карты
+  //         map.addChild(new YMapDefaultSchemeLayer());
+  //     }
+  // }
 });
 
 /***/ }),

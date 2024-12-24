@@ -65,10 +65,10 @@
                         Input::make('menu.url')
                             ->title('Адрес страницы')
                             ->required(),
-                        CheckBox::make('block.active')
+                        CheckBox::make('menu.active')
                             ->title('Активность')
                             ->sendTrueOrFalse(),
-                        Input::make('block.sort')
+                        Input::make('menu.sort')
                             ->title('Сортировка')
                             ->type('number')
                             ->required(),

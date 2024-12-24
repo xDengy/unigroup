@@ -18,20 +18,21 @@ declare(strict_types=1);
     use App\Orchid\Screens\PartnerEditScreen;
     use App\Orchid\Screens\PartnerListScreen;
     use App\Orchid\Screens\PlatformScreen;
+    use App\Orchid\Screens\PortfolioEditScreen;
+    use App\Orchid\Screens\PortfolioListScreen;
     use App\Orchid\Screens\ReviewEditScreen;
     use App\Orchid\Screens\ReviewListScreen;
     use App\Orchid\Screens\Role\RoleEditScreen;
-use App\Orchid\Screens\Role\RoleListScreen;
+    use App\Orchid\Screens\Role\RoleListScreen;
     use App\Orchid\Screens\SettingEditScreen;
     use App\Orchid\Screens\SettingListScreen;
     use App\Orchid\Screens\User\UserEditScreen;
-use App\Orchid\Screens\User\UserListScreen;
-use App\Orchid\Screens\User\UserProfileScreen;
-use Illuminate\Support\Facades\Route;
-use Tabuna\Breadcrumbs\Trail;
-
-use App\Orchid\Screens\PageListScreen;
-use App\Orchid\Screens\PageEditScreen;
+    use App\Orchid\Screens\User\UserListScreen;
+    use App\Orchid\Screens\User\UserProfileScreen;
+    use Illuminate\Support\Facades\Route;
+    use Tabuna\Breadcrumbs\Trail;
+    use App\Orchid\Screens\PageListScreen;
+    use App\Orchid\Screens\PageEditScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,3 +144,7 @@ Route::screen('faqsEdit', FaqEditScreen::class)->name('platform.faqs.edit');
 Route::screen('directors', DirectorListScreen::class)->name('platform.directors.list');
 Route::screen('directors/{id}', DirectorEditScreen::class)->name('platform.directors.editItem');
 Route::screen('directorsEdit', DirectorEditScreen::class)->name('platform.directors.edit');
+
+Route::screen('portfolios', PortfolioListScreen::class)->name('platform.portfolios.list');
+Route::screen('portfolios/{id}', PortfolioEditScreen::class)->name('platform.portfolios.editItem');
+Route::screen('portfoliosEdit', PortfolioEditScreen::class)->name('platform.portfolios.edit');

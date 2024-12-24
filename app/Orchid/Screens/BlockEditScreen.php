@@ -97,7 +97,7 @@
                         Upload::make('block.attachment')
                             ->title('Фотографии')
                             ->groups('blocks')
-                            ->acceptedFiles('image/*'),
+                            ->acceptedFiles('image/*, video/*'),
                     ]),
                 ]),
             ];

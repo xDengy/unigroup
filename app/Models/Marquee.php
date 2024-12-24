@@ -23,4 +23,9 @@
         protected $allowedFilters = [
             'active' => Where::class
         ];
+
+        protected $allowedSorts = [
+            'sort',
+            'active',
+        ];
     }

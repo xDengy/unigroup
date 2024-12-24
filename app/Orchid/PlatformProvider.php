@@ -40,6 +40,9 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Блоки')
                 ->route('platform.blocks.list'),
 
+            Menu::make('Портфолио')
+                ->route('platform.portfolios.list'),
+
             Menu::make('Преимущества')
                 ->route('platform.advantages.list'),
 

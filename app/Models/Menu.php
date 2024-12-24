@@ -19,4 +19,9 @@
             'sort',
             'active',
         ];
+
+        protected $allowedSorts = [
+            'sort',
+            'active',
+        ];
     }

@@ -1,20 +1,7 @@
 @extends('layout')
-@section('title')
-    {{$page['title']}}
-@endsection
-@section('description')
-    {{$page['description']}}
-@endsection
-@section('keywords')
-    {{$page['keywords']}}
-@endsection
-
-@section('styles')
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-@endsection
 
 @section('body')
-    @if(!empty($blocks['about']))
+    @if( !empty($blocks['about']) )
         <section class="about">
             <div class="container">
                 <div class="about-wrapper">
@@ -62,7 +49,7 @@
             </div>
         </section>
     @endif
-    @if(!empty($director))
+    @if( !empty($director) )
         <section class="director">
             <div class="container">
                 <div class="director-wrapper">
@@ -77,7 +64,7 @@
                             {{$director['name']}}
                         </div>
                         <div class="director-description">
-                            {{$director['text']}}
+                            @php echo html_entity_decode($director['text']) @endphp
                         </div>
                         <div class="director-quote">
                             <div class="quote quote-left"></div>
@@ -91,7 +78,7 @@
             </div>
         </section>
     @endif
-    @if( count($blocks['gallery-1']['attachment']) > 0 )
+    @if( !empty($blocks['gallery-1']) && !empty($blocks['gallery-1']['attachment']) )
         @php
             $first = array_shift($blocks['gallery-1']['attachment']);
             $seconds = array_chunk($blocks['gallery-1']['attachment'], 2);
@@ -102,72 +89,76 @@
                     <img src="{{$first['url']}}" alt="">
                 </div>
             </div>
-            <div class="gallery-col">
-                @php
-                    $class = [];
-                    if (count($seconds) == 1) {
-                        $class[0] = 'h-50';
-                        $class[1] = 'h-50';
-                    } else {
-                        $class[0] = 'h-33';
-                        $class[1] = 'h-66 w-50';
-                    }
-                @endphp
-                @foreach( $seconds[0] as $index => $second )
-                    <div class="gallery-image {{$class[$index]}}">
-                        <img src="{{$second['url']}}" alt="">
-                    </div>
-                @endforeach
-                @if ( count($seconds) > 1 )
+            @if( count($seconds) > 0 )
+                <div class="gallery-col">
                     @php
-                        $class = '';
-                        if (count($seconds[1]) > 1) {
-                            $class = 'h-50';
+                        $class = [];
+                        if (count($seconds) == 1) {
+                            $class[0] = 'h-50';
+                            $class[1] = 'h-50';
+                        } else {
+                            $class[0] = 'h-33';
+                            $class[1] = 'h-66 w-50';
                         }
                     @endphp
-                    <div class="gallery-col h-66">
-                        @foreach( $seconds[1] as $second )
-                            <div class="gallery-image {{$class}}">
-                                <img src="{{$second['url']}}" alt="">
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
+                    @foreach( $seconds[0] as $index => $second )
+                        <div class="gallery-image {{$class[$index]}}">
+                            <img src="{{$second['url']}}" alt="">
+                        </div>
+                    @endforeach
+                    @if ( count($seconds) > 1 )
+                        @php
+                            $class = '';
+                            if (count($seconds[1]) > 1) {
+                                $class = 'h-50';
+                            }
+                        @endphp
+                        <div class="gallery-col h-66">
+                            @foreach( $seconds[1] as $second )
+                                <div class="gallery-image {{$class}}">
+                                    <img src="{{$second['url']}}" alt="">
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            @endif
         </section>
     @endif
-    <section class="rent">
-        <div class="container">
-            <div class="rent-top">
-                <div class="ladder">
-                    <h2 class="ladder-title-background">{{$blocks['our-partners']['second_name']}}</h2>
-                    <h2 class="ladder-title">{{$blocks['our-partners']['name']}}</h2>
-                </div>
-            </div>
-            <div class="rent-bottom">
-                <div class="rent-text">
-                    @php echo html_entity_decode($blocks['our-partners']['text']) @endphp
-                </div>
-            </div>
-        </div>
-        @if (count($partners) > 0)
-            <section class="partners">
-                <div class="partners-line partners-line-left"></div>
-                <div class="container">
-                    <div class="partners-wrapper">
-                        @foreach($partners as $index => $partner)
-                            <div class="partner">{{$partner['name']}}</div>
-                            @if($index = count($partners) - 1)
-                                <div class="delimiter"></div>
-                            @endif
-                        @endforeach
+    @if( !empty($blocks['our-partners']) )
+        <section class="rent">
+            <div class="container">
+                <div class="rent-top">
+                    <div class="ladder">
+                        <h2 class="ladder-title-background">{{$blocks['our-partners']['second_name']}}</h2>
+                        <h2 class="ladder-title">{{$blocks['our-partners']['name']}}</h2>
                     </div>
                 </div>
-                <div class="partners-line partners-line-right"></div>
-            </section>
-        @endif
-    </section>
-    @if(!empty($blocks['certificates']))
+                <div class="rent-bottom">
+                    <div class="rent-text">
+                        @php echo html_entity_decode($blocks['our-partners']['text']) @endphp
+                    </div>
+                </div>
+            </div>
+            @if ( !empty($partners) )
+                <section class="partners">
+                    <div class="partners-line partners-line-left"></div>
+                    <div class="container">
+                        <div class="partners-wrapper">
+                            @foreach($partners as $index => $partner)
+                                <div class="partner">{{$partner['name']}}</div>
+                                @if($index = count($partners) - 1)
+                                    <div class="delimiter"></div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="partners-line partners-line-right"></div>
+                </section>
+            @endif
+        </section>
+    @endif
+    @if( !empty($blocks['certificates']) )
         <section class="about-marquee">
             <div class="marquee-wrapper">
                 <div class="marquee-line">
@@ -218,7 +209,7 @@
             </div>
         </section>
     @endif
-    @if(!empty($blocks['faq']))
+    @if( !empty($blocks['faq']) )
         <section class="faq">
             <div class="container">
                 <div class="faq-top">
@@ -228,7 +219,7 @@
                     </div>
                 </div>
                 <div class="faq-bottom">
-                    @foreach($faq as $faqItem)
+                    @foreach( $faq as $faqItem )
                         <div class="faq-item">
                             <div class="faq-title-block">
                                 <div class="faq-title">
@@ -252,7 +243,7 @@
             </div>
         </section>
     @endif
-    @if(!empty($blocks['literacy']))
+    @if( !empty($blocks['literacy']) )
         <section class="about-marquee">
             <div class="marquee-wrapper">
                 <div class="marquee-line">
@@ -274,7 +265,7 @@
             <div class="container">
                 <div class="swiper">
                     <div class="swiper-wrapper">
-                        @foreach($blocks['literacy']['attachment'] as $attachment)
+                        @foreach( $blocks['literacy']['attachment'] as $attachment )
                             <div class="swiper-slide">
                                 <div class="literacy-items">
                                     <img src="{{$attachment['url']}}" alt="">

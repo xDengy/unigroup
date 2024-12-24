@@ -10,6 +10,7 @@
     use App\Models\Menu;
     use App\Models\Page;
     use App\Models\Partner;
+    use App\Models\Portfolio;
     use App\Models\Review;
     use App\Models\Setting;
     use Illuminate\Http\Request;
@@ -21,7 +22,7 @@
         public function __construct()
         {
             $this->data['settings'] = Setting::first();
-            $this->data['menus'] = Menu::all();
+            $this->data['menus'] = Menu::where('active', 1)->orderBy('sort', 'asc')->get();
 
             $blocks = Block::where('active', 1)->get();
             foreach ($blocks as $block) {
@@ -57,5 +58,18 @@
             $this->data['faq'] = Faq::where('active', 1)->orderBy('sort', 'asc')->get();
             $this->data['director'] = Director::first();
             return view('about', $this->data);
+        }
+
+        public function portfolio()
+        {
+            $this->data['page'] = Page::where('page_url', route('portfolio', [], false))->first();
+            $this->data['portfolios'] = Portfolio::where('active', 1)->orderBy('sort', 'asc')->get();
+            return view('portfolio', $this->data);
+        }
+
+        public function contacts()
+        {
+            $this->data['page'] = Page::where('page_url', route('contacts', [], false))->first();
+            return view('contacts', $this->data);
         }
     }

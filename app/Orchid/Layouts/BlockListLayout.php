@@ -6,6 +6,7 @@
     use Orchid\Screen\Actions\Link;
     use Orchid\Screen\Fields\CheckBox;
     use Orchid\Screen\Fields\Input;
+    use Orchid\Screen\Fields\Select;
     use Orchid\Screen\Layouts\Table;
     use Orchid\Screen\TD;
 
@@ -19,7 +20,10 @@
                     return Link::make($el->name)->route('platform.blocks.editItem', $el);
                 }),
                 TD::make('code', 'Код')->filter(Input::make()),
-                TD::make('active', 'Активность')->filter(CheckBox::make()),
+                TD::make('active', 'Активность')->filter(Select::make()->options([
+                    'Нет',
+                    'Да'
+                ])),
             ];
         }
     }

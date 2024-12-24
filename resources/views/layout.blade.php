@@ -5,13 +5,16 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>@yield('title')</title>
-        <meta name="description" content="@yield('description')">
-        <meta name="keywords" content="@yield('keywords')">
+        <title>
+            {{$page['title']}}
+        </title>
+        <meta name="description" content="{{$page['description']}}">
+        <meta name="keywords" content="{{$page['keywords']}}">
         <link rel="stylesheet" href="{{asset('css/global.css')}}">
-        @yield('styles')
+        <link rel="stylesheet" href="{{asset('css/main.css')}}">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/jquery.marquee/1.3.1/jquery.marquee.min.js"></script>
+        <script src="https://api-maps.yandex.ru/v3/?apikey=812faeea-4d80-4e8b-b466-42f11f8e17a6&lang=ru_RU"></script>
     </head>
     <body class="page-{{$page['code']}}">
         <header>
