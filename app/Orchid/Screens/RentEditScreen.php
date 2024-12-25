@@ -21,7 +21,7 @@
     class RentEditScreen extends Screen
     {
 
-        public $name = 'Преимущества';
+        public $name = 'Элементы аренды';
         public $exists = false;
         public $parent = null;
         public $rentSection = null;

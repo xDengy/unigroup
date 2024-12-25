@@ -78,14 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let mapSection = document.querySelector('.page-contacts section.map')
     if (mapSection) {
-        initMap();
-
-        async function initMap() {
-            // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+        window.initMap = async function (marks) {
             let ymaps3 = window.ymaps3;
             await ymaps3.ready;
+            ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
 
-            const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+            const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer} = ymaps3;
+            const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
             // Иницилиазируем карту
             const map = new YMap(
@@ -97,15 +96,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     location: {
                         // Координаты центра карты
                         center: [37.588144, 55.733842],
-
                         // Уровень масштабирования
                         zoom: 10
-                    }
+                    },
                 }
             );
 
             // Добавляем слой для отображения схематической карты
             map.addChild(new YMapDefaultSchemeLayer());
+
+            map.addChild(new YMapDefaultFeaturesLayer());
+            marks.forEach((markerSource) => {
+                const marker = new YMapDefaultMarker(markerSource);
+                map.addChild(marker);
+            });
         }
     }
 })

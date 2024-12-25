@@ -91,18 +91,24 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   var mapSection = document.querySelector('.page-contacts section.map');
   if (mapSection) {
-    var initMap = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var ymaps3, YMap, YMapDefaultSchemeLayer, map;
+    window.initMap = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(marks) {
+        var ymaps3, YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, _yield$ymaps3$import, YMapDefaultMarker, map;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
               ymaps3 = window.ymaps3;
               _context.next = 3;
               return ymaps3.ready;
             case 3:
-              YMap = ymaps3.YMap, YMapDefaultSchemeLayer = ymaps3.YMapDefaultSchemeLayer; // Иницилиазируем карту
+              ymaps3["import"].registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
+              YMap = ymaps3.YMap, YMapDefaultSchemeLayer = ymaps3.YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer = ymaps3.YMapDefaultFeaturesLayer;
+              _context.next = 7;
+              return ymaps3["import"]('@yandex/ymaps3-default-ui-theme');
+            case 7:
+              _yield$ymaps3$import = _context.sent;
+              YMapDefaultMarker = _yield$ymaps3$import.YMapDefaultMarker;
+              // Иницилиазируем карту
               map = new YMap(
               // Передаём ссылку на HTMLElement контейнера
               document.getElementById('map'),
@@ -116,17 +122,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
               }); // Добавляем слой для отображения схематической карты
               map.addChild(new YMapDefaultSchemeLayer());
-            case 6:
+              map.addChild(new YMapDefaultFeaturesLayer());
+              marks.forEach(function (markerSource) {
+                var marker = new YMapDefaultMarker(markerSource);
+                map.addChild(marker);
+              });
+            case 13:
             case "end":
               return _context.stop();
           }
         }, _callee);
       }));
-      return function initMap() {
+      return function (_x) {
         return _ref.apply(this, arguments);
       };
     }();
-    initMap();
   }
 });
 

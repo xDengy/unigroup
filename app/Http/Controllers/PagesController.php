@@ -6,6 +6,7 @@
     use App\Models\Block;
     use App\Models\Director;
     use App\Models\Faq;
+    use App\Models\Map;
     use App\Models\Marquee;
     use App\Models\Menu;
     use App\Models\Page;
@@ -71,6 +72,7 @@
         public function contacts()
         {
             $this->data['page'] = Page::where('page_url', route('contacts', [], false))->first();
+            $this->data['map'] = Map::where('active', 1)->get();
             return view('contacts', $this->data);
         }
 

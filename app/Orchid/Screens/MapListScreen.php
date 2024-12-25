@@ -2,19 +2,19 @@
 
     namespace App\Orchid\Screens;
 
-    use App\Models\Partner;
-    use App\Orchid\Layouts\PartnerListLayout;
+    use App\Models\Map;
+    use App\Orchid\Layouts\MapListLayout;
     use Orchid\Screen\Actions\Link;
     use Orchid\Screen\Screen;
 
-    class PartnerListScreen extends Screen
+    class MapListScreen extends Screen
     {
-        public $name = 'Партнеры';
+        public $name = 'Карта';
 
         public function query($id = null): array
         {
             return [
-                'partners' => Partner::filters()->defaultSort('id', 'desc')->paginate()
+                'maps' => Map::filters()->defaultSort('id', 'desc')->paginate()
             ];
         }
 
@@ -23,7 +23,7 @@
             $commandAr = [];
             $commandAr[] = Link::make('Добавить элемент')
                 ->icon('plus')
-                ->route('platform.partners.edit');
+                ->route('platform.maps.edit');
 
             return $commandAr;
         }
@@ -31,7 +31,7 @@
         public function layout(): array
         {
             return [
-                PartnerListLayout::class
+                MapListLayout::class
             ];
         }
     }

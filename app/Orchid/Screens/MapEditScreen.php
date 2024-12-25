@@ -2,14 +2,13 @@
 
     namespace App\Orchid\Screens;
 
-    use App\Models\RentSection;
+    use App\Models\Map;
     use Illuminate\Http\Request;
     use Orchid\Screen\Actions\Button;
     use Orchid\Screen\Actions\Link;
     use Orchid\Screen\Fields\CheckBox;
     use Orchid\Screen\Fields\Group;
     use Orchid\Screen\Fields\Input;
-    use Orchid\Screen\Fields\Picture;
     use Orchid\Screen\Fields\Quill;
     use Orchid\Screen\Fields\TextArea;
     use Orchid\Screen\Fields\Upload;
@@ -17,26 +16,26 @@
     use Orchid\Support\Facades\Alert;
     use Orchid\Support\Facades\Layout;
 
-    class RentSectionEditScreen extends Screen
+    class MapEditScreen extends Screen
     {
 
-        public $name = 'Разделы аренды';
+        public $name = 'Карта';
         public $exists = false;
         public $parent = null;
 
         public function query($id = null): array
         {
             if ($id) {
-                $el = RentSection::find($id);
+                $el = Map::find($id);
                 $this->exists = $el->exists;
             }
             if ($this->exists) {
-                $this->name = $el->name;
+                $this->name = $el->title;
             } else {
                 $this->name = 'Создать';
             }
             return [
-                'rentSection' => $el ?? null
+                'map' => $el ?? null
             ];
         }
 
@@ -54,7 +53,7 @@
 
                 Link::make('Назад')
                     ->icon('arrow-left')
-                    ->route('platform.rentSections.list')
+                    ->route('platform.maps.list')
             ];
         }
 
@@ -63,50 +62,50 @@
             return [
                 Layout::rows([
                     Group::make([
-                        Input::make('rentSection.name')
+                        Input::make('map.title')
                             ->title('Название')
                             ->required(),
-                        CheckBox::make('rentSection.active')
+                        Input::make('map.subtitle')
+                            ->title('Описание'),
+                        CheckBox::make('map.active')
                             ->title('Активность')
                             ->sendTrueOrFalse(),
-                        Input::make('rentSection.sort')
-                            ->title('Сортировка')
-                            ->type('number')
-                            ->required(),
-                        Input::make('rentSection.id')
+                        Input::make('map.id')
                             ->type('hidden'),
                     ]),
                 ]),
                 Layout::rows([
                     Group::make([
-                        Picture::make('rentSection.image')
-                            ->title('Фото')
-                            ->acceptedFiles('image/*')
+                        Input::make('map.coorX')
+                            ->title('Координаты X')
+                            ->required(),
+                        Input::make('map.coorY')
+                            ->title('Координаты Y')
                             ->required(),
                     ]),
                 ]),
             ];
         }
 
-        public function createOrUpdate(RentSection $el, Request $request)
+        public function createOrUpdate(Map $el, Request $request)
         {
-            $requestAr = $request->get('rentSection');
+            $requestAr = $request->get('map');
             if ($requestAr['id']) {
-                $el = RentSection::find($requestAr['id']);
+                $el = Map::find($requestAr['id']);
                 $el->update($requestAr);
             } else {
-                RentSection::create($requestAr);
+                Map::create($requestAr);
             }
 
             Alert::info('You have successfully created / updated.');
-            return redirect()->route('platform.rentSections.list');
+            return redirect()->route('platform.maps.list');
         }
 
         public function remove($id)
         {
-            $el = RentSection::find($id);
+            $el = Map::find($id);
             $el->delete();
             Alert::info('You have successfully deleted.');
-            return redirect()->route('platform.rentSections.list');
+            return redirect()->route('platform.maps.list');
         }
     }

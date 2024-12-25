@@ -70,3 +70,22 @@
     @endif
     @include('form')
 @endsection
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let mapData = <?=json_encode($map)?>;
+            let markersGeoJsonSource = [];
+            for (let i = 0; i < mapData.length; i++) {
+                markersGeoJsonSource.push({
+                    coordinates: [mapData[i].coorX, mapData[i].coorY],
+                    title: mapData[i].title,
+                    subtitle: mapData[i].subtitle,
+                    color: 'lavender',
+                    size: 'normal',
+                    iconName: 'fallback'
+                })
+            }
+            window.initMap(markersGeoJsonSource);
+        })
+    </script>
+@endsection

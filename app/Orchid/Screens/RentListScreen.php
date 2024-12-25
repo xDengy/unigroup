@@ -11,7 +11,7 @@
 
     class RentListScreen extends Screen
     {
-        public $name = 'Преимущества';
+        public $name = 'Элементы аренды';
         public $rentSection = [];
         public $rentSectionId = 0;
 

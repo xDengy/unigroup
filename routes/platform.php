@@ -11,6 +11,8 @@ declare(strict_types=1);
     use App\Orchid\Screens\Examples\ExampleScreen;
     use App\Orchid\Screens\FaqEditScreen;
     use App\Orchid\Screens\FaqListScreen;
+    use App\Orchid\Screens\MapEditScreen;
+    use App\Orchid\Screens\MapListScreen;
     use App\Orchid\Screens\MarqueeEditScreen;
     use App\Orchid\Screens\MarqueeListScreen;
     use App\Orchid\Screens\MenuEditScreen;
@@ -159,3 +161,7 @@ Route::screen('rentSectionsEdit', RentSectionEditScreen::class)->name('platform.
 Route::screen('rents/{rentSectionId}', RentListScreen::class)->name('platform.rents.list');
 Route::screen('rents/{rentSectionId}/{id}', RentEditScreen::class)->name('platform.rents.editItem');
 Route::screen('rentsEdit', RentEditScreen::class)->name('platform.rents.edit');
+
+Route::screen('maps', MapListScreen::class)->name('platform.maps.list');
+Route::screen('maps/{id}', MapEditScreen::class)->name('platform.maps.editItem');
+Route::screen('mapsEdit', MapEditScreen::class)->name('platform.maps.edit');
