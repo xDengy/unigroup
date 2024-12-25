@@ -50,7 +50,10 @@
         <section class="map">
             <div class="container">
                 <div class="map-title">
-                    {{$blocks['map']['name']}}
+                    <div class="ladder">
+                        <h2 class="ladder-title-background">{{$blocks['map']['name']}}</h2>
+                        <h1 class="ladder-title">{{$blocks['map']['name']}}</h1>
+                    </div>
                 </div>
             </div>
             @if ( !empty($blocks['map']['attachment']) )

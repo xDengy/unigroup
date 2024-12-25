@@ -20,6 +20,10 @@ declare(strict_types=1);
     use App\Orchid\Screens\PlatformScreen;
     use App\Orchid\Screens\PortfolioEditScreen;
     use App\Orchid\Screens\PortfolioListScreen;
+    use App\Orchid\Screens\RentEditScreen;
+    use App\Orchid\Screens\RentListScreen;
+    use App\Orchid\Screens\RentSectionEditScreen;
+    use App\Orchid\Screens\RentSectionListScreen;
     use App\Orchid\Screens\ReviewEditScreen;
     use App\Orchid\Screens\ReviewListScreen;
     use App\Orchid\Screens\Role\RoleEditScreen;
@@ -148,3 +152,10 @@ Route::screen('directorsEdit', DirectorEditScreen::class)->name('platform.direct
 Route::screen('portfolios', PortfolioListScreen::class)->name('platform.portfolios.list');
 Route::screen('portfolios/{id}', PortfolioEditScreen::class)->name('platform.portfolios.editItem');
 Route::screen('portfoliosEdit', PortfolioEditScreen::class)->name('platform.portfolios.edit');
+
+Route::screen('rentSections', RentSectionListScreen::class)->name('platform.rentSections.list');
+Route::screen('rentSections/{id}', RentSectionEditScreen::class)->name('platform.rentSections.editItem');
+Route::screen('rentSectionsEdit', RentSectionEditScreen::class)->name('platform.rentSections.edit');
+Route::screen('rents/{rentSectionId}', RentListScreen::class)->name('platform.rents.list');
+Route::screen('rents/{rentSectionId}/{id}', RentEditScreen::class)->name('platform.rents.editItem');
+Route::screen('rentsEdit', RentEditScreen::class)->name('platform.rents.edit');

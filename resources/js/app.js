@@ -69,35 +69,43 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    // let mapSection = document.querySelector('section.map')
-    // if (mapSection) {
-    //     initMap();
-    //
-    //     async function initMap() {
-    //         // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
-    //         await ymaps3.ready;
-    //
-    //         const {YMap, YMapDefaultSchemeLayer} = ymaps3;
-    //
-    //         // Иницилиазируем карту
-    //         const map = new YMap(
-    //             // Передаём ссылку на HTMLElement контейнера
-    //             document.getElementById('map'),
-    //
-    //             // Передаём параметры инициализации карты
-    //             {
-    //                 location: {
-    //                     // Координаты центра карты
-    //                     center: [37.588144, 55.733842],
-    //
-    //                     // Уровень масштабирования
-    //                     zoom: 10
-    //                 }
-    //             }
-    //         );
-    //
-    //         // Добавляем слой для отображения схематической карты
-    //         map.addChild(new YMapDefaultSchemeLayer());
-    //     }
-    // }
+    let rentArrows = document.querySelectorAll('.rent-block-arrow');
+    for (let i = 0; i < rentArrows.length; i++) {
+        rentArrows[i].addEventListener('click', () => {
+            rentArrows[i].closest('.rent-block-item').classList.toggle('show')
+        })
+    }
+
+    let mapSection = document.querySelector('.page-contacts section.map')
+    if (mapSection) {
+        initMap();
+
+        async function initMap() {
+            // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+            let ymaps3 = window.ymaps3;
+            await ymaps3.ready;
+
+            const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+
+            // Иницилиазируем карту
+            const map = new YMap(
+                // Передаём ссылку на HTMLElement контейнера
+                document.getElementById('map'),
+
+                // Передаём параметры инициализации карты
+                {
+                    location: {
+                        // Координаты центра карты
+                        center: [37.588144, 55.733842],
+
+                        // Уровень масштабирования
+                        zoom: 10
+                    }
+                }
+            );
+
+            // Добавляем слой для отображения схематической карты
+            map.addChild(new YMapDefaultSchemeLayer());
+        }
+    }
 })

@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/jquery.marquee/1.3.1/jquery.marquee.min.js"></script>
-        <script src="https://api-maps.yandex.ru/v3/?apikey=812faeea-4d80-4e8b-b466-42f11f8e17a6&lang=ru_RU"></script>
+        <script src="https://api-maps.yandex.ru/v3/?apikey=dc7c17a8-bf94-4133-a37c-72f2b0d0240b&lang=ru_RU"></script>
     </head>
     <body class="page-{{$page['code']}}">
         <header>

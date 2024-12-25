@@ -18,3 +18,4 @@ Route::get('/', [PagesController::class, 'main'])->name('main');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/portfolio', [PagesController::class, 'portfolio'])->name('portfolio');
 Route::get('/contacts', [PagesController::class, 'contacts'])->name('contacts');
+Route::get('/rent', [PagesController::class, 'rent'])->name('rent');

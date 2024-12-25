@@ -11,6 +11,7 @@
     use App\Models\Page;
     use App\Models\Partner;
     use App\Models\Portfolio;
+    use App\Models\RentSection;
     use App\Models\Review;
     use App\Models\Setting;
     use Illuminate\Http\Request;
@@ -71,5 +72,12 @@
         {
             $this->data['page'] = Page::where('page_url', route('contacts', [], false))->first();
             return view('contacts', $this->data);
+        }
+
+        public function rent()
+        {
+            $this->data['page'] = Page::where('page_url', route('rent', [], false))->first();
+            $this->data['rents'] = RentSection::where('active', 1)->orderBy('sort', 'asc')->get();
+            return view('rent', $this->data);
         }
     }
