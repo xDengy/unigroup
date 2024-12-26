@@ -2515,6 +2515,14 @@ footer .container {
 }
 /*RENT*/
 
+.form-error {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
 @keyframes scroll {
     from {
         transform: translateX(0);
