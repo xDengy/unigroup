@@ -18,6 +18,8 @@ return new class extends Migration
             $table->longText('chars')->nullable();
             $table->longText('additional_text')->nullable();
             $table->string('type');
+            $table->longText('preview_text');
+            $table->longText('preview');
             $table->char('active');
             $table->integer('sort');
             $table->timestamps();

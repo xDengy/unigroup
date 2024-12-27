@@ -89,9 +89,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="mobile-image">
-                    <img src="{{asset('imgs/mobileImage.png')}}" alt="">
-                </div>
+            </div>
+            <div class="mobile-image">
+                <img src="{{asset('imgs/mobileImage.png')}}" alt="">
             </div>
         </div>
         @yield('body')
@@ -105,8 +105,10 @@
         </section>
         <footer>
             <div class="container">
-                <div class="logo">
-                    <img src="{{$settings['logoFooter']}}" alt="">
+                <div class="logo-wrapper">
+                    <div class="logo">
+                        <img src="{{$settings['logoFooter']}}" alt="">
+                    </div>
                 </div>
                 <nav class="footer-menu">
                     @foreach($menus as $menu)

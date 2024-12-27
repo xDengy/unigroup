@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var mobile = document.querySelector('.mobile');
   if (burger && mobile) {
     burger.addEventListener('click', function () {
+      document.body.classList.toggle('overflow-hidden');
       burger.classList.toggle('active');
       mobile.classList.toggle('active');
     });
@@ -32,27 +33,129 @@ document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper('.swiper', {
     slidesPerView: 3,
     spaceBetween: 20,
+    allowSlideNext: true,
+    allowSlidePrev: true,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev"
     },
-    speed: 400,
-    loop: true
+    speed: 600,
+    centeredSlides: false,
+    loop: true,
+    slideToClickedSlide: true,
+    watchSlidesVisibility: true
   });
   var aboutSwiper = new Swiper('.page-about .swiper', {
+    spaceBetween: 20,
+    speed: 600,
+    allowSlideNext: true,
+    allowSlidePrev: true,
     slidesPerView: 1,
-    spaceBetween: 0,
-    speed: 400,
-    loop: true
+    centeredSlides: false,
+    loop: true,
+    slideToClickedSlide: true,
+    watchSlidesVisibility: true
   });
   var portfolioSwiper = new Swiper('.page-portfolio .swiper', {
+    spaceBetween: 20,
+    speed: 600,
+    allowSlideNext: true,
+    allowSlidePrev: true,
     slidesPerView: 1,
-    spaceBetween: 0,
-    speed: 400,
+    centeredSlides: false,
     loop: true,
+    slideToClickedSlide: true,
+    watchSlidesVisibility: true,
     navigation: {
       nextEl: ".portfolio-swiper-button-next",
       prevEl: ".portfolio-swiper-button-prev"
+    }
+  });
+  var gallerySwiper = new Swiper('.gallery-2.swiper-block .swiper', {
+    spaceBetween: 20,
+    speed: 600,
+    allowSlideNext: true,
+    allowSlidePrev: true,
+    slidesPerView: 1,
+    centeredSlides: false,
+    loop: true,
+    slideToClickedSlide: true,
+    watchSlidesVisibility: true,
+    navigation: {
+      nextEl: ".portfolio-swiper-button-next",
+      prevEl: ".portfolio-swiper-button-prev"
+    }
+  });
+  var portfoliosSwiper = new Swiper('section.projects .projects-wrapper-bottom.swiper-block .swiper', {
+    spaceBetween: 20,
+    speed: 600,
+    allowSlideNext: true,
+    allowSlidePrev: true,
+    slidesPerView: 1,
+    centeredSlides: false,
+    loop: true,
+    slideToClickedSlide: true,
+    watchSlidesVisibility: true,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    }
+  });
+  var reviewsSwiper = new Swiper('.reviews .swiper', {
+    spaceBetween: 20,
+    speed: 600,
+    allowSlideNext: true,
+    allowSlidePrev: true,
+    slidesPerView: 1,
+    centeredSlides: false,
+    loop: true,
+    slideToClickedSlide: true,
+    watchSlidesVisibility: true,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2
+      },
+      1215: {
+        slidesPerView: 3
+      }
+    }
+  });
+  var aboutWrapperSwiper = new Swiper('.about-wrapper-bottom.swiper-block .swiper', {
+    spaceBetween: 20,
+    speed: 600,
+    allowSlideNext: true,
+    allowSlidePrev: true,
+    slidesPerView: 1,
+    centeredSlides: false,
+    loop: true,
+    slideToClickedSlide: true,
+    watchSlidesVisibility: true,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    }
+  });
+  var aboutGallerySwiper = new Swiper('.page-about .gallery .swiper', {
+    spaceBetween: 20,
+    speed: 600,
+    allowSlideNext: true,
+    allowSlidePrev: true,
+    slidesPerView: 1,
+    centeredSlides: false,
+    loop: true,
+    slideToClickedSlide: true,
+    watchSlidesVisibility: true,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
     }
   });
   var faqTitleBlock = document.querySelectorAll('.faq-title-block');
@@ -176,7 +279,7 @@ window.Inputmask = (inputmask__WEBPACK_IMPORTED_MODULE_1___default());
 
 
 window.Swiper = swiper__WEBPACK_IMPORTED_MODULE_2__["default"];
-swiper__WEBPACK_IMPORTED_MODULE_2__["default"].use([swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Navigation]);
+swiper__WEBPACK_IMPORTED_MODULE_2__["default"].use([swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Pagination]);
 // import Echo from 'laravel-echo';
 
 // import Pusher from 'pusher-js';

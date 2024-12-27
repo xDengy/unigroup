@@ -19,9 +19,9 @@ import Inputmask from 'inputmask';
 window.Inputmask = Inputmask;
 
 import Swiper from 'swiper';
-import {Navigation} from 'swiper/modules'
+import {Navigation, Pagination} from 'swiper/modules'
 window.Swiper = Swiper;
-Swiper.use([ Navigation]);
+Swiper.use([ Navigation, Pagination ]);
 // import Echo from 'laravel-echo';
 
 // import Pusher from 'pusher-js';

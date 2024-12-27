@@ -9,6 +9,7 @@
     use Orchid\Screen\Fields\CheckBox;
     use Orchid\Screen\Fields\Group;
     use Orchid\Screen\Fields\Input;
+    use Orchid\Screen\Fields\Picture;
     use Orchid\Screen\Fields\Quill;
     use Orchid\Screen\Fields\Select;
     use Orchid\Screen\Fields\Upload;
@@ -112,6 +113,10 @@
                         Upload::make('portfolio.attachment')
                             ->title('Фотографии')
                             ->groups('portfolios')
+                            ->acceptedFiles('image/*'),
+                        Picture::make('portfolio.preview')
+                            ->title('Картинка анонса')
+                            ->required()
                             ->acceptedFiles('image/*'),
                     ]),
                 ]),

@@ -20,6 +20,8 @@ class Portfolio extends Model
         'chars',
         'additional_text',
         'type',
+        'preview_text',
+        'preview',
         'active',
         'sort',
     ];

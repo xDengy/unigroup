@@ -18,6 +18,20 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="about-wrapper-bottom swiper-block">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                @foreach($blocks['about']['attachment'] as $attachment)
+                                    <div class="swiper-slide">
+                                        <div class="about-image">
+                                            <img src="{{$attachment['url']}}" alt="">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
                     <div class="about-wrapper-text">
                         @php echo html_entity_decode($blocks['about']['text']) @endphp
                     </div>
@@ -124,6 +138,20 @@
                 </div>
             @endif
         </section>
+        <section class="gallery swiper-block">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach($blocks['gallery-2']['attachment'] as $pic)
+                        <div class="swiper-slide">
+                            <div class="gallery-image">
+                                <img src="{{$pic['url']}}" alt="">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
     @endif
     @if( !empty($blocks['our-partners']) )
         <section class="rent">
@@ -147,7 +175,7 @@
                         <div class="partners-wrapper">
                             @foreach($partners as $index => $partner)
                                 <div class="partner">{{$partner['name']}}</div>
-                                @if($index = count($partners) - 1)
+                                @if($index !== count($partners) - 1)
                                     <div class="delimiter"></div>
                                 @endif
                             @endforeach

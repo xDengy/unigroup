@@ -62,22 +62,55 @@
                         </a>
                     </div>
                     <div class="projects-wrapper-bottom">
-                        <div class="project">
-                            <div class="project-image">
-                                <img src="{{asset('imgs/project.png')}}" alt="">
+                        @foreach($portfolios as $portfolio)
+                            <div class="project">
+                                <div class="project-image">
+                                    <img src="{{$portfolio['preview']}}" alt="">
+                                </div>
+                                <div class="project-name">
+                                    {{$portfolio['name']}}
+                                </div>
+                                <div class="project-description">
+                                    @php echo html_entity_decode($portfolio['preview_text']) @endphp
+                                </div>
+                                <div class="project-delimiter"></div>
+                                <a href="{{route('portfolio')}}#{{$portfolio['id']}}" class="project-detail">
+                                    <img src="{{asset('imgs/projectDetail.svg')}}" alt="">
+                                </a>
                             </div>
-                            <div class="project-name">
-                                Жилые комплексы
+                        @endforeach
+                    </div>
+                    <div class="projects-wrapper-bottom swiper-block">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                @foreach($portfolios as $portfolio)
+                                    <div class="swiper-slide">
+                                        <div class="project">
+                                            <div class="project-image">
+                                                <img src="{{$portfolio['preview']}}" alt="">
+                                            </div>
+                                            <div class="project-name">
+                                                {{$portfolio['name']}}
+                                            </div>
+                                            <div class="project-description">
+                                                @php echo html_entity_decode($portfolio['preview_text']) @endphp
+                                            </div>
+                                            <div class="project-delimiter"></div>
+                                            <a href="{{route('portfolio')}}#{{$portfolio['id']}}" class="project-detail">
+                                                <img src="{{asset('imgs/projectDetail.svg')}}" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="project-description">
-                                Lorem ipsum dolor sit amet consectetur. Suspendisse venenatis lectus elit auctor aenean malesuada lectus in.
-                            </div>
-                            <div class="project-delimiter"></div>
-                            <a href="" class="project-detail">
-                                <img src="{{asset('imgs/projectDetail.svg')}}" alt="">
-                            </a>
+                            <div class="swiper-pagination"
+
+                            ></div>
                         </div>
                     </div>
+                    <a href="{{$blocks['projects']['link']}}" class="more-button more-button-bottom">
+                        {{$blocks['projects']['link_text']}} <img src="{{asset('imgs/arrow.svg')}}" alt="">
+                    </a>
                 </div>
             </div>
         </section>
@@ -199,7 +232,7 @@
                 <div class="partners-wrapper">
                     @foreach($partners as $index => $partner)
                         <div class="partner">{{$partner['name']}}</div>
-                        @if($index = count($partners) - 1)
+                        @if($index !== count($partners) - 1)
                             <div class="delimiter"></div>
                         @endif
                     @endforeach
@@ -238,6 +271,20 @@
                         @endforeach
                     </div>
                 @endforeach
+            </div>
+        </section>
+        <section class="gallery-2 swiper-block">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    @foreach($blocks['gallery-2']['attachment'] as $pic)
+                        <div class="swiper-slide">
+                            <div class="gallery-item">
+                                <img src="{{$pic['url']}}" alt="">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </section>
     @endif

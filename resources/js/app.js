@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let mobile = document.querySelector('.mobile')
     if (burger && mobile) {
         burger.addEventListener('click', () => {
+            document.body.classList.toggle('overflow-hidden');
             burger.classList.toggle('active');
             mobile.classList.toggle('active');
         })
@@ -19,29 +20,136 @@ document.addEventListener('DOMContentLoaded', () => {
     const swiper = new Swiper('.swiper', {
         slidesPerView: 3,
         spaceBetween: 20,
+        allowSlideNext: true,
+        allowSlidePrev: true,
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
-        speed: 400,
+        speed: 600,
+        centeredSlides: false,
         loop: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
     });
 
     const aboutSwiper = new Swiper('.page-about .swiper', {
+        spaceBetween: 20,
+        speed: 600,
+        allowSlideNext: true,
+        allowSlidePrev: true,
         slidesPerView: 1,
-        spaceBetween: 0,
-        speed: 400,
+        centeredSlides: false,
         loop: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
     });
 
     const portfolioSwiper = new Swiper('.page-portfolio .swiper', {
+        spaceBetween: 20,
+        speed: 600,
+        allowSlideNext: true,
+        allowSlidePrev: true,
         slidesPerView: 1,
-        spaceBetween: 0,
-        speed: 400,
+        centeredSlides: false,
         loop: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
         navigation: {
             nextEl: ".portfolio-swiper-button-next",
             prevEl: ".portfolio-swiper-button-prev",
+        },
+    });
+
+    const gallerySwiper = new Swiper('.gallery-2.swiper-block .swiper', {
+        spaceBetween: 20,
+        speed: 600,
+        allowSlideNext: true,
+        allowSlidePrev: true,
+        slidesPerView: 1,
+        centeredSlides: false,
+        loop: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
+        navigation: {
+            nextEl: ".portfolio-swiper-button-next",
+            prevEl: ".portfolio-swiper-button-prev",
+        },
+    });
+
+    const portfoliosSwiper = new Swiper('section.projects .projects-wrapper-bottom.swiper-block .swiper', {
+        spaceBetween: 20,
+        speed: 600,
+        allowSlideNext: true,
+        allowSlidePrev: true,
+        slidesPerView: 1,
+        centeredSlides: false,
+        loop: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+    });
+
+    const reviewsSwiper = new Swiper('.reviews .swiper', {
+        spaceBetween: 20,
+        speed: 600,
+        allowSlideNext: true,
+        allowSlidePrev: true,
+        slidesPerView: 1,
+        centeredSlides: false,
+        loop: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1215: {
+                slidesPerView: 3,
+            },
+        }
+    });
+
+    const aboutWrapperSwiper = new Swiper('.about-wrapper-bottom.swiper-block .swiper', {
+        spaceBetween: 20,
+        speed: 600,
+        allowSlideNext: true,
+        allowSlidePrev: true,
+        slidesPerView: 1,
+        centeredSlides: false,
+        loop: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+    });
+
+    const aboutGallerySwiper = new Swiper('.page-about .gallery .swiper', {
+        spaceBetween: 20,
+        speed: 600,
+        allowSlideNext: true,
+        allowSlidePrev: true,
+        slidesPerView: 1,
+        centeredSlides: false,
+        loop: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
         },
     });
 

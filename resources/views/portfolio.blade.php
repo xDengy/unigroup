@@ -109,7 +109,7 @@
                                 @break(true)
                             @case('simple')
                                 <div class="portfolio-item portfolio-item-simple">
-                                    @if( empty($portfolio['attachment']) )
+                                    @if( !empty($portfolio['attachment']) )
                                         <div class="portfolio-item-clear-image-wrapper">
                                             <div class="portfolio-item-clear-image">
                                                 <img src="{{$portfolio['attachment'][0]['url']}}" alt="">
@@ -134,13 +134,13 @@
                                 <div class="portfolio-item portfolio-item-additional">
                                     <h3>{{$portfolio['name']}}</h3>
                                     <div class="portfolio-item-collapse-image">
-                                        @if( empty($additionalText) )
+                                        @if( !empty($additionalText) )
                                             <div class="portfolio-item-collapse-additional-text portfolio-item-collapse-additional-text--left">
                                                 <div class="portfolio-item-collapse-additional-text-stroke">{{$additionalText[0]}}</div>
                                                 <div class="additional-text-stroke"></div>
                                             </div>
                                         @endif
-                                        @if( empty($portfolio['attachment']) )
+                                        @if( !empty($portfolio['attachment']) )
                                             <img src="{{$portfolio['attachment'][0]['url']}}" alt="">
                                         @endif
                                         @if( count($additionalText) > 1 )
