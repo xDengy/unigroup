@@ -1,0 +1,29 @@
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <b>Имя</b>
+            </td>
+            <td>
+                {{$data['name']}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Телефон</b>
+            </td>
+            <td>
+                {{$data['phone']}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Страница</b>
+            </td>
+            <td>
+                {{$data['page']}}
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -26,7 +26,7 @@
                     @foreach($portfolios as $portfolio)
                         @switch($portfolio['type'])
                             @case('default')
-                                <div class="portfolio-item">
+                                <div class="portfolio-item" id="{{$portfolio['id']}}">
                                     <div class="portfolio-item-image-block">
                                         <div class="swiper">
                                             <div class="swiper-wrapper">
@@ -69,7 +69,7 @@
                                 </div>
                                 @break(true)
                             @case('reverse')
-                                <div class="portfolio-item portfolio-item-reverse">
+                                <div class="portfolio-item portfolio-item-reverse" id="{{$portfolio['id']}}">
                                     <div class="portfolio-item-image-block">
                                         <div class="swiper">
                                             <div class="swiper-wrapper">
@@ -108,7 +108,7 @@
                                 </div>
                                 @break(true)
                             @case('simple')
-                                <div class="portfolio-item portfolio-item-simple">
+                                <div class="portfolio-item portfolio-item-simple" id="{{$portfolio['id']}}">
                                     @if( !empty($portfolio['attachment']) )
                                         <div class="portfolio-item-clear-image-wrapper">
                                             <div class="portfolio-item-clear-image">
@@ -131,7 +131,7 @@
                                 @break(true)
                             @case('additional')
                                 @php $additionalText = unserialize($portfolio['additional_text']) @endphp
-                                <div class="portfolio-item portfolio-item-additional">
+                                <div class="portfolio-item portfolio-item-additional" id="{{$portfolio['id']}}">
                                     <h3>{{$portfolio['name']}}</h3>
                                     <div class="portfolio-item-collapse-image">
                                         @if( !empty($additionalText) )

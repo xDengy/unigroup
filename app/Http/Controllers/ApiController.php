@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FormEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ApiController extends Controller
 {
@@ -14,6 +16,13 @@ class ApiController extends Controller
             'page' => 'required|max:255',
         ]);
 
-        return json_encode($validated);
+        if (array_key_exists('errors', $validated)) {
+            return json_encode($validated);
+        } else {
+            Mail::send(new FormEmail($validated));
+            return [
+                'success' => true,
+            ];
+        }
     }
 }

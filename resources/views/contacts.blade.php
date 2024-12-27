@@ -69,8 +69,6 @@
         </section>
     @endif
     @include('form')
-@endsection
-@section('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             let mapData = <?=json_encode($map)?>;
