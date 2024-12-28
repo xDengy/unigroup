@@ -35,12 +35,12 @@
             } else {
                 $this->name = 'Создать';
             }
-            if (!is_null($el->chars) && $el->chars !== '') {
+            if (!is_null($el->chars) && $el->chars !== '' && $el->chars !== '[]') {
                 $el->chars = unserialize($el->chars);
             } else {
                 $el->chars = [];
             }
-            if (!is_null($el->additional_text) && $el->additional_text !== '') {
+            if (!is_null($el->additional_text) && $el->additional_text !== '' && $el->additional_text !== '[]') {
                 $el->additional_text = unserialize($el->additional_text);
             } else {
                 $el->additional_text = [];
