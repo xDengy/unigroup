@@ -1335,6 +1335,7 @@ footer .container {
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
+    transition: ease-in-out 0.25s;
 }
 
 .banner-strokes {
@@ -1740,6 +1741,10 @@ footer .container {
     border: none;
     cursor: pointer;
     text-transform: uppercase;
+}
+
+.form-button input[type="submit"] {
+    transition: ease-in-out 0.25s;
 }
 
 .partners {
@@ -2606,6 +2611,34 @@ section.projects .projects-wrapper-bottom.swiper-block {
     display: none;
 }
 
+.banner-button:hover,
+.form-button input[type="submit"]:hover {
+    background: #000;
+    color: #fff;
+}
+
+.more-button:hover,
+header .social.phone:hover,
+header .menu li a:hover,
+.footer-menu li a:hover,
+footer .social.phone:hover,
+footer .social.email:hover,
+.contacts-info-phone:hover {
+    text-decoration: underline;
+}
+
+.quote.quote-left {
+    position: absolute;
+    top: 0;
+    left: -175px;
+}
+
+.quote.quote-right {
+    position: absolute;
+    bottom: 0;
+    right: -20px;
+}
+
 @keyframes scroll {
     from {
         transform: translateX(0);
@@ -2905,6 +2938,7 @@ section.projects .projects-wrapper-bottom.swiper-block {
         align-items: end;
         flex-wrap: wrap;
         flex-direction: row;
+        font-size: 16px;
     }
 
     footer .logo {
@@ -3108,6 +3142,38 @@ section.projects .projects-wrapper-bottom.swiper-block {
 
     .portfolio-banner-image {
         height: calc(100vh - 96px);
+    }
+
+    .director .container {
+        width: calc(100% - 40px);
+    }
+
+    .director-info {
+        padding: 25px 0;
+    }
+
+    .director-quote {
+        padding: 65px 0;
+        overflow: hidden;
+        width: calc(100% + 40px);
+        margin-left: -20px;
+    }
+
+    .mobile-socials {
+        font-size: 15px;
+    }
+
+    .director-quote-text {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .quote.quote-right {
+        right: -120px;
+    }
+
+    .quote.quote-left {
+        left: -120px;
     }
 }
 

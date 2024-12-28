@@ -81,11 +81,21 @@
                             @php echo html_entity_decode($director['text']) @endphp
                         </div>
                         <div class="director-quote">
-                            <div class="quote quote-left"></div>
+                            <div class="quote quote-left">
+                                <svg width="174" height="31" viewBox="0 0 174 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M151.9 15V30.9H136V16.65L143.2 0H149.95L145.6 15H151.9ZM173.8 15V30.9H157.9V16.65L165.1 0H171.85L167.5 15H173.8Z" fill="#90242E"/>
+                                    <line x1="-0.00732422" y1="27.5" x2="139.007" y2="27.5" stroke="#90242E" stroke-width="7"/>
+                                </svg>
+                            </div>
                             <div class="director-quote-text">
                                 @php echo htmlspecialchars_decode($director['quote']) @endphp
                             </div>
-                            <div class="quote quote-right"></div>
+                            <div class="quote quote-right">
+                                <svg width="181" height="31" viewBox="0 0 181 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.9 15V30.9H0V16.65L7.2 0H13.95L9.6 15H15.9ZM37.8 15V30.9H21.9V16.65L29.1 0H35.85L31.5 15H37.8Z" fill="#90242E"/>
+                                    <line x1="37" y1="27.5" x2="181" y2="27.5" stroke="#90242E" stroke-width="7"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
