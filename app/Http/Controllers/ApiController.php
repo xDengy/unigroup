@@ -12,7 +12,7 @@ class ApiController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'phone' => 'required|max:255',
+            'phone' => 'required|max:255|min:18',
             'page' => 'required|max:255',
         ]);
 

@@ -49,7 +49,7 @@
             $this->data['advantages'] = Advantage::where('active', 1)->orderBy('sort', 'asc')->get();
             $this->data['reviews'] = Review::where('active', 1)->orderBy('sort', 'asc')->get();
             $this->data['partners'] = Partner::where('active', 1)->orderBy('sort', 'asc')->get();
-            $this->data['portfolios'] = Portfolio::where('active', 1)->orderBy('sort', 'asc')->limit(4)->get();
+            $this->data['portfolios'] = Portfolio::where('active', 1)->orderBy('sort', 'desc')->limit(4)->get();
             $this->data['marquees'] = Marquee::where('active', 1)->orderBy('sort', 'asc')->get();
             return view('welcome', $this->data);
         }

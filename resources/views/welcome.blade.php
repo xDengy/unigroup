@@ -139,8 +139,8 @@
                         <h2 class="ladder-title-background">{{$blocks['rent']['second_name']}}</h2>
                         <h2 class="ladder-title">{{$blocks['rent']['name']}}</h2>
                     </div>
-                    <a href="{{$blocks['projects']['link']}}" class="more-button">
-                        {{$blocks['projects']['link_text']}} <img src="{{asset('imgs/arrow.svg')}}" alt="">
+                    <a href="{{$blocks['rent']['link']}}" class="more-button">
+                        {{$blocks['rent']['link_text']}} <img src="{{asset('imgs/arrow.svg')}}" alt="">
                     </a>
                 </div>
                 <div class="rent-bottom">

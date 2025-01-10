@@ -188,36 +188,59 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mapSection) {
         window.initMap = async function (marks) {
             let ymaps3 = window.ymaps3;
-            await ymaps3.ready;
-            ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
+            if (ymaps3) {
+                await ymaps3.ready;
+                ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
 
-            const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer} = ymaps3;
-            const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+                const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer} = ymaps3;
+                const {YMapDefaultMarker} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
-            // Иницилиазируем карту
-            const map = new YMap(
-                // Передаём ссылку на HTMLElement контейнера
-                document.getElementById('map'),
+                // Иницилиазируем карту
+                const map = new YMap(
+                    // Передаём ссылку на HTMLElement контейнера
+                    document.getElementById('map'),
 
-                // Передаём параметры инициализации карты
-                {
-                    location: {
-                        // Координаты центра карты
-                        center: [37.588144, 55.733842],
-                        // Уровень масштабирования
-                        zoom: 10
-                    },
-                }
-            );
+                    // Передаём параметры инициализации карты
+                    {
+                        location: {
+                            // Координаты центра карты
+                            center: [37.588144, 55.733842],
+                            // Уровень масштабирования
+                            zoom: 10
+                        },
+                    }
+                );
 
-            // Добавляем слой для отображения схематической карты
-            map.addChild(new YMapDefaultSchemeLayer());
+                // Добавляем слой для отображения схематической карты
+                map.addChild(new YMapDefaultSchemeLayer());
 
-            map.addChild(new YMapDefaultFeaturesLayer());
-            marks.forEach((markerSource) => {
-                const marker = new YMapDefaultMarker(markerSource);
-                map.addChild(marker);
-            });
+                map.addChild(new YMapDefaultFeaturesLayer());
+                marks.forEach((markerSource) => {
+                    const marker = new YMapDefaultMarker(markerSource);
+                    map.addChild(marker);
+                });
+            }
         }
     }
+
+    let blocks = document.querySelectorAll('section');
+
+    function checkBlocksVisibility() {
+        let windowHeight = window.innerHeight;
+
+        blocks.forEach(block => {
+            let blockPosition = block.getBoundingClientRect().top;
+
+            if (blockPosition < windowHeight - 100) {
+                block.style.opacity = "1";
+                block.style.transform = "translateY(0)";
+            }
+        });
+    }
+
+    checkBlocksVisibility();
+
+    window.addEventListener('scroll', function() {
+        checkBlocksVisibility();
+    });
 })

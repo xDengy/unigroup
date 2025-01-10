@@ -201,14 +201,18 @@ document.addEventListener('DOMContentLoaded', function () {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               ymaps3 = window.ymaps3;
-              _context.next = 3;
+              if (!ymaps3) {
+                _context.next = 14;
+                break;
+              }
+              _context.next = 4;
               return ymaps3.ready;
-            case 3:
+            case 4:
               ymaps3["import"].registerCdn('https://cdn.jsdelivr.net/npm/{package}', '@yandex/ymaps3-default-ui-theme@latest');
               YMap = ymaps3.YMap, YMapDefaultSchemeLayer = ymaps3.YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer = ymaps3.YMapDefaultFeaturesLayer;
-              _context.next = 7;
+              _context.next = 8;
               return ymaps3["import"]('@yandex/ymaps3-default-ui-theme');
-            case 7:
+            case 8:
               _yield$ymaps3$import = _context.sent;
               YMapDefaultMarker = _yield$ymaps3$import.YMapDefaultMarker;
               // Иницилиазируем карту
@@ -230,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var marker = new YMapDefaultMarker(markerSource);
                 map.addChild(marker);
               });
-            case 13:
+            case 14:
             case "end":
               return _context.stop();
           }
@@ -241,6 +245,21 @@ document.addEventListener('DOMContentLoaded', function () {
       };
     }();
   }
+  var blocks = document.querySelectorAll('section');
+  function checkBlocksVisibility() {
+    var windowHeight = window.innerHeight;
+    blocks.forEach(function (block) {
+      var blockPosition = block.getBoundingClientRect().top;
+      if (blockPosition < windowHeight - 100) {
+        block.style.opacity = "1";
+        block.style.transform = "translateY(0)";
+      }
+    });
+  }
+  checkBlocksVisibility();
+  window.addEventListener('scroll', function () {
+    checkBlocksVisibility();
+  });
 });
 
 /***/ }),
