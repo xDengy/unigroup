@@ -2514,6 +2514,8 @@ footer .container {
     position: relative;
     border: 1px solid;
     padding: 20px calc(var(--mb) / 2);
+    padding-right: calc(var(--mb) + 20px);
+    gap: 85px;
 }
 
 .rent-block-wrapper .rent-block-item:last-child .rent-block-item-top {
@@ -2521,7 +2523,17 @@ footer .container {
 }
 
 .rent-block-image {
-    margin-right: 85px;
+    width: 100px;
+    height: 100px;
+    -o-object-fit: contain;
+       object-fit: contain;
+}
+
+.rent-block-title {
+    word-break: break-all;
+    font-size: calc(var(--mb) / 2);
+    line-height: calc(var(--mb) / 2);
+    color: #90242E;
 }
 
 .rent-block-arrow {
@@ -3265,6 +3277,17 @@ footer .social.email:hover,
 
     .form-popup-wrapper-description {
         line-height: 27.5px;
+    }
+
+    .rent-block-item-top {
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .rent-block-title {
+        text-align: right;
+        font-size: 35px;
+        line-height: 35px;
     }
 }
 
