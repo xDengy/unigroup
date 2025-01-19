@@ -1,35 +1,37 @@
 @extends('layout')
 
 @section('body')
-    @if( !empty($blocks['banner']) )
-        <section class="banner">
-            <div class="container">
-                <div class="banner-wrapper">
-                    @php
-                        $pageTitle = str_replace('-', '<span class="slash"></span>', $page['h1'])
-                    @endphp
-                    <h1>
-                        @php echo $pageTitle; @endphp
-                    </h1>
-                </div>
+    <section class="banner">
+        <div class="container">
+            <div class="banner-wrapper">
+                @php
+                    $pageTitle = str_replace('-', '<span class="slash"></span>', $page['h1'])
+                @endphp
+                <h1>
+                    @php echo $pageTitle; @endphp
+                </h1>
             </div>
+        </div>
+        @if( !empty($blocks['banner'] && !empty($blocks['banner']['attachment'])) )
             <div class="banner-textarea container">
                 <div class="banner-text">
                     @php echo html_entity_decode($blocks['banner']['text']); @endphp
                 </div>
                 <div class="banner-image">
-                    <img src="{{$blocks['banner']['attachment'][0]['url']}}" alt="">
+                    <a class="fancybox" href="{{$blocks['banner']['attachment'][0]['url']}}" data-fancybox="banner">
+                        <img src="{{$blocks['banner']['attachment'][0]['url']}}" alt="">
+                    </a>
                     <div class="banner-square"></div>
                 </div>
                 <a href="{{$blocks['banner']['link']}}" class="banner-button">
                     {{$blocks['banner']['link_text']}}
                 </a>
             </div>
-            <div class="banner-strokes">
-                <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
-            </div>
-        </section>
-    @endif
+        @endif
+        <div class="banner-strokes">
+            <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
+        </div>
+    </section>
     @if( !empty($advantages) )
         <section class="trophies">
             <div class="container">
@@ -75,7 +77,9 @@
                                 </div>
                                 <div class="project-delimiter"></div>
                                 <a href="{{route('portfolio')}}#{{$portfolio['id']}}" class="project-detail">
-                                    <img src="{{asset('imgs/projectDetail.svg')}}" alt="">
+                                    <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M57.2986 4.0002C57.2986 2.06721 55.7316 0.500207 53.7986 0.500203L22.2986 0.500204C20.3656 0.500205 18.7986 2.06721 18.7986 4.0002C18.7986 5.9332 20.3656 7.50021 22.2986 7.5002L50.2986 7.5002L50.2986 35.5002C50.2986 37.4332 51.8656 39.0002 53.7986 39.0002C55.7316 39.0002 57.2986 37.4332 57.2986 35.5002L57.2986 4.0002ZM5.47487 57.2737L56.2735 6.47508L51.3237 1.52533L0.525126 52.324L5.47487 57.2737Z" fill="#E8E8E8"/>
+                                    </svg>
                                 </a>
                             </div>
                         @endforeach
@@ -97,7 +101,9 @@
                                             </div>
                                             <div class="project-delimiter"></div>
                                             <a href="{{route('portfolio')}}#{{$portfolio['id']}}" class="project-detail">
-                                                <img src="{{asset('imgs/projectDetail.svg')}}" alt="">
+                                                <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M57.2986 4.0002C57.2986 2.06721 55.7316 0.500207 53.7986 0.500203L22.2986 0.500204C20.3656 0.500205 18.7986 2.06721 18.7986 4.0002C18.7986 5.9332 20.3656 7.50021 22.2986 7.5002L50.2986 7.5002L50.2986 35.5002C50.2986 37.4332 51.8656 39.0002 53.7986 39.0002C55.7316 39.0002 57.2986 37.4332 57.2986 35.5002L57.2986 4.0002ZM5.47487 57.2737L56.2735 6.47508L51.3237 1.52533L0.525126 52.324L5.47487 57.2737Z" fill="#E8E8E8"/>
+                                                </svg>
                                             </a>
                                         </div>
                                     </div>
@@ -169,7 +175,9 @@
         <section class="gallery">
             <div class="gallery-col">
                 <div class="gallery-image">
-                    <img src="{{$first['url']}}" alt="">
+                    <a class="fancybox" href="{{$first['url']}}" data-fancybox="gallery-1">
+                        <img src="{{$first['url']}}" alt="">
+                    </a>
                 </div>
             </div>
             <div class="gallery-col">
@@ -185,7 +193,9 @@
                 @endphp
                 @foreach( $seconds[0] as $index => $second )
                     <div class="gallery-image {{$class[$index]}}">
-                        <img src="{{$second['url']}}" alt="">
+                        <a class="fancybox" href="{{$second['url']}}" data-fancybox="gallery-1">
+                            <img src="{{$second['url']}}" alt="">
+                        </a>
                     </div>
                 @endforeach
                 @if ( count($seconds) > 1 )
@@ -198,7 +208,9 @@
                     <div class="gallery-col h-66">
                         @foreach( $seconds[1] as $second )
                             <div class="gallery-image {{$class}}">
-                                <img src="{{$second['url']}}" alt="">
+                                <a class="fancybox" href="{{$second['url']}}" data-fancybox="gallery-1">
+                                    <img src="{{$second['url']}}" alt="">
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -266,7 +278,9 @@
                     <div class="gallery-2-col">
                         @foreach($gal as $i => $pic)
                             <div class="gallery-2-row {{$class[$index][$i]}}">
-                                <img src="{{$pic['url']}}" alt="">
+                                <a class="fancybox" href="{{$pic['url']}}" data-fancybox="gallery-2">
+                                    <img src="{{$pic['url']}}" alt="">
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -279,7 +293,9 @@
                     @foreach($blocks['gallery-2']['attachment'] as $pic)
                         <div class="swiper-slide">
                             <div class="gallery-item">
-                                <img src="{{$pic['url']}}" alt="">
+                                <a class="fancybox" href="{{$pic['url']}}" data-fancybox="gallery-2-slider">
+                                    <img src="{{$pic['url']}}" alt="">
+                                </a>
                             </div>
                         </div>
                     @endforeach

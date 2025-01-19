@@ -1,4 +1,5 @@
 import './bootstrap';
+import Fancybox from "./fancybox.min";
 
 document.addEventListener('DOMContentLoaded', () => {
     let burger = document.querySelector('.burger')
@@ -243,4 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', function() {
         checkBlocksVisibility();
     });
+
+    Fancybox.Fancybox.bind(".fancybox", {});
 })

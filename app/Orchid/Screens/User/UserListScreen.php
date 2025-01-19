@@ -80,8 +80,7 @@ class UserListScreen extends Screen
             UserFiltersLayout::class,
             UserListLayout::class,
 
-            Layout::modal('editUserModal', UserEditLayout::class)
-                ->deferred('loadUserOnOpenModal'),
+            Layout::modal('editUserModal', UserEditLayout::class),
         ];
     }
 

@@ -1,6 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/fancybox.min.js": "/js/fancybox.min.js",
     "/css/global.css": "/css/global.css",
+    "/css/fancybox.min.css": "/css/fancybox.min.css",
     "/css/main.css": "/css/main.css",
     "/fonts/BebasNeue/BebasNeue-Bold.otf": "/fonts/BebasNeue/BebasNeue-Bold.otf",
     "/fonts/BebasNeue/BebasNeue-Bold.ttf": "/fonts/BebasNeue/BebasNeue-Bold.ttf",

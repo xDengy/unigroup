@@ -23,7 +23,7 @@
         <section class="portfolio">
             <div class="container">
                 <div class="portfolio-wrapper">
-                    @foreach($portfolios as $portfolio)
+                    @foreach($portfolios as $index => $portfolio)
                         @switch($portfolio['type'])
                             @case('default')
                                 <div class="portfolio-item" id="{{$portfolio['id']}}">
@@ -33,7 +33,9 @@
                                                 @foreach($portfolio['attachment'] as $attachment)
                                                     <div class="swiper-slide">
                                                         <div class="portfolio-image">
-                                                            <img src="{{$attachment['url']}}" alt="">
+                                                            <a class="fancybox" href="{{$attachment['url']}}" data-fancybox="portfolio-{{$index}}">
+                                                                <img src="{{$attachment['url']}}" alt="">
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -76,7 +78,9 @@
                                                 @foreach( $portfolio['attachment'] as $attachment )
                                                     <div class="swiper-slide">
                                                         <div class="portfolio-image">
-                                                            <img src="{{$attachment['url']}}" alt="">
+                                                            <a class="fancybox" href="{{$attachment['url']}}" data-fancybox="portfolio-{{$index}}">
+                                                                <img src="{{$attachment['url']}}" alt="">
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -112,12 +116,16 @@
                                     @if( !empty($portfolio['attachment']) )
                                         <div class="portfolio-item-clear-image-wrapper">
                                             <div class="portfolio-item-clear-image">
-                                                <img src="{{$portfolio['attachment'][0]['url']}}" alt="">
+                                                <a class="fancybox" href="{{$portfolio['attachment'][0]['url']}}" data-fancybox="portfolio-{{$index}}">
+                                                    <img src="{{$portfolio['attachment'][0]['url']}}" alt="">
+                                                </a>
                                             </div>
                                             <div class="portfolio-item-clear-image-col">
                                                 @if( count($portfolio['attachment']) > 1 )
                                                     <div class="portfolio-item-clear-col-image">
-                                                        <img src="{{$portfolio['attachment'][1]['url']}}" alt="">
+                                                        <a class="fancybox" href="{{$portfolio['attachment'][1]['url']}}" data-fancybox="portfolio-{{$index}}">
+                                                            <img src="{{$portfolio['attachment'][1]['url']}}" alt="">
+                                                        </a>
                                                     </div>
                                                 @endif
                                                 <h3>{{$portfolio['name']}}</h3>
@@ -141,7 +149,9 @@
                                             </div>
                                         @endif
                                         @if( !empty($portfolio['attachment']) )
-                                            <img src="{{$portfolio['attachment'][0]['url']}}" alt="">
+                                            <a class="fancybox" href="{{$portfolio['attachment'][0]['url']}}" data-fancybox="portfolio-{{$index}}">
+                                                <img src="{{$portfolio['attachment'][0]['url']}}" alt="">
+                                            </a>
                                         @endif
                                         @if( count($additionalText) > 1 )
                                             <div class="portfolio-item-collapse-additional-text portfolio-item-collapse-additional-text--right">

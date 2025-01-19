@@ -14,7 +14,9 @@
                     <div class="about-wrapper-bottom">
                         @foreach($blocks['about']['attachment'] as $attachment)
                             <div class="about-image">
-                                <img src="{{$attachment['url']}}" alt="">
+                                <a class="fancybox" href="{{$attachment['url']}}" data-fancybox="about">
+                                    <img src="{{$attachment['url']}}" alt="">
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -24,7 +26,9 @@
                                 @foreach($blocks['about']['attachment'] as $attachment)
                                     <div class="swiper-slide">
                                         <div class="about-image">
-                                            <img src="{{$attachment['url']}}" alt="">
+                                            <a class="fancybox" href="{{$attachment['url']}}" data-fancybox="about-slider">
+                                                <img src="{{$attachment['url']}}" alt="">
+                                            </a>
                                         </div>
                                     </div>
                                 @endforeach
@@ -68,7 +72,9 @@
             <div class="container">
                 <div class="director-wrapper">
                     <div class="director-image">
-                        <img src="{{$director['picture']}}" alt="">
+                        <a class="fancybox" href="{{$director['picture']}}" data-fancybox="director">
+                            <img src="{{$director['picture']}}" alt="">
+                        </a>
                     </div>
                     <div class="director-info">
                         <div class="director-post">

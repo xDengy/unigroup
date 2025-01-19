@@ -82,7 +82,6 @@
                             ->required(),
                         Input::make('rent.price')
                             ->title('Цена')
-                            ->type('number')
                             ->required(),
                         CheckBox::make('rent.active')
                             ->title('Активность')
