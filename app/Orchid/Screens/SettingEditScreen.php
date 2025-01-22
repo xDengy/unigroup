@@ -90,6 +90,10 @@
                             ->title('Картинка цитаты')
                             ->acceptedFiles('image/*')
                             ->required(),
+                        Picture::make('setting.mobileMenuImage')
+                            ->title('Картинка в мобильном меню')
+                            ->acceptedFiles('image/*')
+                            ->required(),
                     ]),
                 ]),
                 Layout::rows([

@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="mobile-image">
-                <img src="{{asset('imgs/mobileImage.png')}}" alt="">
+                <img src="{{$settings['mobileMenuImage']}}" alt="">
             </div>
         </div>
         @yield('body')

@@ -22,5 +22,6 @@
             'logo',
             'logoFooter',
             'quotePicture',
+            'mobileMenuImage',
         ];
     }

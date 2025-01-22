@@ -3,47 +3,56 @@
 @section('body')
     @if( !empty($blocks['about']) )
         <section class="about">
-            <div class="container">
                 <div class="about-wrapper">
                     <div class="about-wrapper-top">
-                        <div class="ladder">
-                            <h2 class="ladder-title-background">{{$blocks['about']['second_name']}}</h2>
-                            <h1 class="ladder-title">{{$blocks['about']['name']}}</h1>
+                        <div class="container">
+                            <div class="ladder">
+                                <h2 class="ladder-title-background">{{$blocks['about']['second_name']}}</h2>
+                                <h1 class="ladder-title">{{$blocks['about']['name']}}</h1>
+                            </div>
                         </div>
                     </div>
                     <div class="about-wrapper-bottom">
-                        @foreach($blocks['about']['attachment'] as $attachment)
-                            <div class="about-image">
-                                <a class="fancybox" href="{{$attachment['url']}}" data-fancybox="about">
-                                    <img src="{{$attachment['url']}}" alt="">
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="about-wrapper-bottom swiper-block">
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                @foreach($blocks['about']['attachment'] as $attachment)
-                                    <div class="swiper-slide">
-                                        <div class="about-image">
-                                            <a class="fancybox" href="{{$attachment['url']}}" data-fancybox="about-slider">
-                                                <img src="{{$attachment['url']}}" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="swiper-pagination"></div>
+                        <div class="banner-strokes">
+                            <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
+                        </div>
+                        <div class="container">
+                            @foreach($blocks['about']['attachment'] as $attachment)
+                                <div class="about-image">
+                                    <a class="fancybox" href="{{$attachment['url']}}" data-fancybox="about">
+                                        <img src="{{$attachment['url']}}" alt="">
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="about-wrapper-text">
-                        @php echo html_entity_decode($blocks['about']['text']) @endphp
+                    <div class="about-wrapper-bottom swiper-block">
+                        <div class="banner-strokes">
+                            <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
+                        </div>
+                        <div class="container">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    @foreach($blocks['about']['attachment'] as $attachment)
+                                        <div class="swiper-slide">
+                                            <div class="about-image">
+                                                <a class="fancybox" href="{{$attachment['url']}}" data-fancybox="about-slider">
+                                                    <img src="{{$attachment['url']}}" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="about-wrapper-text">
+                            @php echo html_entity_decode($blocks['about']['text']) @endphp
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="banner-strokes">
-                <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
-            </div>
         </section>
     @endif
     @if( !empty($blocks['company-marquee']) )

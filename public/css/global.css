@@ -1165,9 +1165,10 @@ header .socials {
 
 .mobile-image {
     width: 100%;
+    height: calc(100vh - 461px);
     margin-top: 50px;
-    -o-object-fit: contain;
-       object-fit: contain;
+    -o-object-fit: cover;
+       object-fit: cover;
     -o-object-position: center;
        object-position: center;
     display: flex;
@@ -1357,7 +1358,7 @@ footer .container {
 .banner-strokes {
     position: absolute;
     right: 5px;
-    top: 50%;
+    top: 0;
     z-index: -1;
 }
 
@@ -1455,6 +1456,7 @@ footer .container {
     position: relative;
     padding: 70px 40px;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .project-image {
@@ -1483,7 +1485,8 @@ footer .container {
     font-size: var(--fz);
     line-height: 30px;
     color: #fff;
-    width: 515px;
+    max-width: 515px;
+    width: 100%;
 }
 
 .project-detail {
@@ -1634,7 +1637,7 @@ footer .container {
 }
 
 .map-text {
-    width: 100%;
+    width: calc(100% - 20px);
     position: absolute;
     left: 20px;
     top: 0;
@@ -1654,7 +1657,7 @@ footer .container {
     -webkit-user-select: none;
        -moz-user-select: none;
             user-select: none;
-    width: 100%;
+    width: calc(100% - 20px);
     position: absolute;
     right: 20px;
     top: -40px;
@@ -2097,6 +2100,7 @@ footer .container {
 
 .page-about .swiper {
     height: 680px;
+    width: 100%;
 }
 
 .faq {
@@ -2412,13 +2416,12 @@ footer .container {
     width: 100%;
     display: flex;
     justify-content: end;
-    position: absolute;
-    bottom: -50px;
-    right: 0;
+    margin-top: -60px;
 }
 
 .portfolio-item-collapse-text {
     width: 50%;
+    font-family: Roboto, serif;
 }
 
 .portfolio-item-collapse-additional-text-stroke {
@@ -3329,11 +3332,37 @@ footer .social.email:hover,
     .fancybox::before {
         content: url(/imgs/fancybox.svg);
         display: block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project {
+        padding: 50px 15px;
+        min-height: 300px;
+        justify-content: start;
+        border-radius: 10px;
+    }
+
+    .project-name {
+        font-size: 35px;
+        line-height: 35px;
+        max-width: 210px;
+    }
+
+    .project-description {
+        font-size: 20px;
+        line-height: 23px;
+        max-width: 210px;
+    }
+
+    .project-detail svg {
         width: 40px;
         height: 40px;
-        position: absolute;
-        left: 20px;
-        bottom: 20px;
     }
 }
 

@@ -33,21 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
   for (var i = 0; i < tels.length; i++) {
     im.mask(tels[i]);
   }
-  var swiper = new Swiper('.swiper', {
-    slidesPerView: 3,
-    spaceBetween: 20,
-    allowSlideNext: true,
-    allowSlidePrev: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    },
-    speed: 600,
-    centeredSlides: false,
-    loop: true,
-    slideToClickedSlide: true,
-    watchSlidesVisibility: true
-  });
   var aboutSwiper = new Swiper('.page-about .swiper', {
     spaceBetween: 20,
     speed: 600,
@@ -56,8 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slidesPerView: 1,
     centeredSlides: false,
     loop: true,
-    slideToClickedSlide: true,
-    watchSlidesVisibility: true
+    slideToClickedSlide: true
   });
   var portfolioSwiper = new Swiper('.page-portfolio .swiper', {
     spaceBetween: 20,
@@ -68,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
     centeredSlides: false,
     loop: true,
     slideToClickedSlide: true,
-    watchSlidesVisibility: true,
     navigation: {
       nextEl: ".portfolio-swiper-button-next",
       prevEl: ".portfolio-swiper-button-prev"
@@ -83,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
     centeredSlides: false,
     loop: true,
     slideToClickedSlide: true,
-    watchSlidesVisibility: true,
     navigation: {
       nextEl: ".portfolio-swiper-button-next",
       prevEl: ".portfolio-swiper-button-prev"
@@ -98,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
     centeredSlides: false,
     loop: true,
     slideToClickedSlide: true,
-    watchSlidesVisibility: true,
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
@@ -114,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
     centeredSlides: false,
     loop: true,
     slideToClickedSlide: true,
-    watchSlidesVisibility: true,
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
@@ -138,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
     centeredSlides: false,
     loop: true,
     slideToClickedSlide: true,
-    watchSlidesVisibility: true,
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
@@ -154,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function () {
     centeredSlides: false,
     loop: true,
     slideToClickedSlide: true,
-    watchSlidesVisibility: true,
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
