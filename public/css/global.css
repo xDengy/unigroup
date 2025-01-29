@@ -1647,6 +1647,10 @@ footer .container {
     font-weight: 400;
 }
 
+.map-text * {
+    background: transparent !important;
+}
+
 .map-title {
     font-weight: 400;
     font-size: 100px;
@@ -1952,6 +1956,7 @@ footer .container {
     position: absolute;
     display: flex;
     width: 55%;
+    height: 550px;
 }
 
 .about-image img {
@@ -3330,13 +3335,16 @@ footer .social.email:hover,
     }
 
     .fancybox::before {
-        content: url(/imgs/fancybox.svg);
+        content: '';
         display: block;
         width: 20px;
         height: 20px;
         position: absolute;
         right: 20px;
         bottom: 20px;
+        background-image: url(/imgs/fancybox.svg);
+        background-position: center;
+        background-size: contain;
     }
 }
 

@@ -125,7 +125,9 @@
         <section class="gallery">
             <div class="gallery-col">
                 <div class="gallery-image">
-                    <img src="{{$first['url']}}" alt="">
+                    <a class="fancybox" href="{{$first['url']}}" data-fancybox="gallery">
+                        <img src="{{$first['url']}}" alt="">
+                    </a>
                 </div>
             </div>
             @if( count($seconds) > 0 )
@@ -142,7 +144,9 @@
                     @endphp
                     @foreach( $seconds[0] as $index => $second )
                         <div class="gallery-image {{$class[$index]}}">
-                            <img src="{{$second['url']}}" alt="">
+                            <a class="fancybox" href="{{$second['url']}}" data-fancybox="gallery">
+                                <img src="{{$second['url']}}" alt="">
+                            </a>
                         </div>
                     @endforeach
                     @if ( count($seconds) > 1 )
@@ -155,7 +159,9 @@
                         <div class="gallery-col h-66">
                             @foreach( $seconds[1] as $second )
                                 <div class="gallery-image {{$class}}">
-                                    <img src="{{$second['url']}}" alt="">
+                                    <a class="fancybox" href="{{$second['url']}}" data-fancybox="gallery">
+                                        <img src="{{$second['url']}}" alt="">
+                                    </a>
                                 </div>
                             @endforeach
                         </div>
@@ -169,7 +175,9 @@
                     @foreach($blocks['gallery-2']['attachment'] as $pic)
                         <div class="swiper-slide">
                             <div class="gallery-image">
-                                <img src="{{$pic['url']}}" alt="">
+                                <a class="fancybox" href="{{$pic['url']}}" data-fancybox="gallery-slider">
+                                    <img src="{{$pic['url']}}" alt="">
+                                </a>
                             </div>
                         </div>
                     @endforeach
