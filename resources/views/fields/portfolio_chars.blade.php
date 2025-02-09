@@ -11,13 +11,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($portfolio->chars as $char)
-                                <tr>
-                                    <td>
-                                        <input type="text" name="portfolio[chars][]" value="{{$char}}">
-                                    </td>
-                                </tr>
-                            @endforeach
+                            @if(!is_null($portfolio))
+                                @foreach($portfolio->chars as $char)
+                                    <tr>
+                                        <td>
+                                            <input type="text" name="portfolio[chars][]" value="{{$char}}">
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             <tr>
                                 <td>
                                     <input type="text" name="portfolio[chars][]">

@@ -26,6 +26,7 @@
 
         public function query($id = null): array
         {
+            $el = null;
             if ($id) {
                 $el = Portfolio::find($id);
                 $this->exists = $el->exists;
@@ -35,15 +36,17 @@
             } else {
                 $this->name = 'Создать';
             }
-            if (!is_null($el->chars) && $el->chars !== '' && $el->chars !== '[]') {
-                $el->chars = unserialize($el->chars);
-            } else {
-                $el->chars = [];
-            }
-            if (!is_null($el->additional_text) && $el->additional_text !== '' && $el->additional_text !== '[]') {
-                $el->additional_text = unserialize($el->additional_text);
-            } else {
-                $el->additional_text = [];
+            if ($el) {
+                if (!is_null($el->chars) && $el->chars !== '' && $el->chars !== '[]') {
+                    $el->chars = unserialize($el->chars);
+                } else {
+                    $el->chars = [];
+                }
+                if (!is_null($el->additional_text) && $el->additional_text !== '' && $el->additional_text !== '[]') {
+                    $el->additional_text = unserialize($el->additional_text);
+                } else {
+                    $el->additional_text = [];
+                }
             }
             return [
                 'portfolio' => $el ?? null
@@ -91,6 +94,9 @@
                     Group::make([
                         Quill::make('portfolio.text')
                             ->title('Текст'),
+                        Quill::make('portfolio.preview_text')
+                            ->title('Текст анонса')
+                            ->required(),
                     ]),
                 ]),
                 Layout::view('fields.portfolio_additional_text'),
@@ -129,10 +135,14 @@
             $requestAr['chars'] = array_filter($requestAr['chars']);
             if (!empty($requestAr['chars'])) {
                 $requestAr['chars'] = serialize($requestAr['chars']);
+            } else {
+                $requestAr['chars'] = null;
             }
             $requestAr['additional_text'] = array_filter($requestAr['additional_text']);
             if (!empty($requestAr['additional_text'])) {
                 $requestAr['additional_text'] = serialize($requestAr['additional_text']);
+            } else {
+                $requestAr['additional_text'] = null;
             }
             if ($requestAr['id']) {
                 $el = Portfolio::find($requestAr['id']);

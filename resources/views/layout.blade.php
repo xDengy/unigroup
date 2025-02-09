@@ -10,9 +10,10 @@
         </title>
         <meta name="description" content="{{$page['description']}}">
         <meta name="keywords" content="{{$page['keywords']}}">
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
         <link rel="stylesheet" href="{{asset('css/global.css')}}">
         <link rel="stylesheet" href="{{asset('css/main.css')}}">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.marquee/1.3.1/jquery.marquee.min.js"></script>
         <script src="https://api-maps.yandex.ru/v3/?apikey=dc7c17a8-bf94-4133-a37c-72f2b0d0240b&lang=ru_RU"></script>
         <script src="{{asset('js/fancybox.min.js')}}"></script>
@@ -35,11 +36,6 @@
                     @endforeach
                 </nav>
                 <div class="socials">
-                    <div class="social">
-                        <a href="{{$settings['vk']}}">
-                            <img src="{{asset('imgs/vk.svg')}}" alt="">
-                        </a>
-                    </div>
                     <div class="social">
                         <a href="{{$settings['whatsapp']}}">
                             <img src="{{asset('imgs/whatsapp.svg')}}" alt="">
@@ -81,11 +77,6 @@
                     </div>
                     <div class="social-wrapper">
                         <div class="social">
-                            <a href="{{$settings['vk']}}">
-                                <img src="{{asset('imgs/vk.svg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="social">
                             <a href="{{$settings['whatsapp']}}">
                                 <img src="{{asset('imgs/whatsapp.svg')}}" alt="">
                             </a>
@@ -123,11 +114,6 @@
                     @endforeach
                 </nav>
                 <div class="socials">
-                    <div class="social">
-                        <a href="{{$settings['vk']}}">
-                            <img src="{{asset('imgs/vkWhite.svg')}}" alt="">
-                        </a>
-                    </div>
                     <div class="social">
                         <a href="{{$settings['whatsapp']}}">
                             <img src="{{asset('imgs/whatsappWhite.svg')}}" alt="">

@@ -11,14 +11,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @for($i = 0; $i < 2; $i++)
-                            @php $value = array_key_exists($i, $portfolio->additional_text) ? $portfolio->additional_text[$i] : '' @endphp
-                            <tr>
-                                <td>
-                                    <input type="text" name="portfolio[additional_text][]" value="{{$value}}">
-                                </td>
-                            </tr>
-                        @endfor
+                            @if(!is_null($portfolio))
+                                @for($i = 0; $i < 2; $i++)
+                                    @php $value = array_key_exists($i, $portfolio->additional_text) ? $portfolio->additional_text[$i] : '' @endphp
+                                    <tr>
+                                        <td>
+                                            <input type="text" name="portfolio[additional_text][]" value="{{$value}}">
+                                        </td>
+                                    </tr>
+                                @endfor
+                            @else
+                                @for($i = 0; $i < 2; $i++)
+                                    <tr>
+                                        <td>
+                                            <input type="text" name="portfolio[additional_text][]">
+                                        </td>
+                                    </tr>
+                                @endfor
+                            @endif
+                        </tbody>
                     </table>
                 </div>
             </div>

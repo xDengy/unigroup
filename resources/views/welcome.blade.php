@@ -16,6 +16,7 @@
             <div class="banner-textarea container">
                 <div class="banner-text">
                     @php echo html_entity_decode($blocks['banner']['text']); @endphp
+                    <div class="banner-text-shadow"></div>
                 </div>
                 <div class="banner-image">
                     <a class="fancybox" href="{{$blocks['banner']['attachment'][0]['url']}}" data-fancybox="banner">
@@ -27,10 +28,10 @@
                     {{$blocks['banner']['link_text']}}
                 </a>
             </div>
+            <div class="banner-strokes">
+                <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
+            </div>
         @endif
-        <div class="banner-strokes">
-            <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
-        </div>
     </section>
     @if( !empty($advantages) )
         <section class="trophies">
@@ -319,11 +320,16 @@
                             @foreach($reviews as $review)
                                 <div class="swiper-slide">
                                     <div class="review">
-                                        <div class="review-title">
-                                            {{$review['name']}}
+                                        <div class="review-text-wrapper">
+                                            <div class="review-title">
+                                                {{$review['name']}}
+                                            </div>
+                                            <div class="review-text">
+                                                @php echo html_entity_decode($review['text']) @endphp
+                                            </div>
                                         </div>
-                                        <div class="review-text">
-                                            @php echo html_entity_decode($review['text']) @endphp
+                                        <div class="review-text-btn">
+                                            Читать далее
                                         </div>
                                     </div>
                                 </div>
@@ -337,5 +343,23 @@
                 </div>
             </div>
         </section>
+        <div class="review-popup">
+            <div class="review-popup-shadow"></div>
+            <div class="review-popup-body">
+                <div class="review-popup-close">
+                    <img src="{{asset('imgs/burgerClose.svg')}}" alt="">
+                </div>
+                <div class="review-popup-wrapper">
+                    <div class="review-popup-title-wrapper">
+                        <div class="review-popup-name">Отзыв</div>
+                        <div class="review-popup-delimiter">\</div>
+                        <div class="review-popup-title"></div>
+                    </div>
+                    <div class="review-popup-text">
+
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
 @endsection

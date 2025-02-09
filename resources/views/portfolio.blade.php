@@ -13,6 +13,7 @@
                         <h1>{{$blocks['portfolio']['name']}}</h1>
                         <div class="portfolio-banner-text">
                             @php echo html_entity_decode($blocks['portfolio']['text']) @endphp
+                            <div class="banner-text-shadow"></div>
                         </div>
                     </div>
                 </div>
@@ -138,14 +139,16 @@
                                 </div>
                                 @break(true)
                             @case('additional')
-                                @php $additionalText = unserialize($portfolio['additional_text']) @endphp
+                                @php $additionalText = is_array(unserialize($portfolio['additional_text'])) ? unserialize($portfolio['additional_text']) : [] @endphp
                                 <div class="portfolio-item portfolio-item-additional" id="{{$portfolio['id']}}">
-                                    <h3>{{$portfolio['name']}}</h3>
                                     <div class="portfolio-item-collapse-image">
                                         @if( !empty($additionalText) )
                                             <div class="portfolio-item-collapse-additional-text portfolio-item-collapse-additional-text--left">
-                                                <div class="portfolio-item-collapse-additional-text-stroke">{{$additionalText[0]}}</div>
-                                                <div class="additional-text-stroke"></div>
+                                                <h3>{{$portfolio['name']}}</h3>
+                                                <div class="portfolio-item-collapse-additional-text-stroke">
+                                                    {{$additionalText[0]}}
+                                                    <div class="additional-text-stroke"></div>
+                                                </div>
                                             </div>
                                         @endif
                                         @if( !empty($portfolio['attachment']) )
@@ -182,8 +185,8 @@
                             <path d="M25 14.5L0.25 28.7894L0.25 0.210581L25 14.5Z" fill="#90242E"/>
                         </svg>
                     </div>
-                    <video>
-                        <source src="{{$blocks['portfolio-video']['attachment'][0]['url']}}" type="{{$blocks['portfolio-video']['attachment'][0]['mime']}}" />
+                    <video controls playsinline preload="auto">
+                        <source src="{{$blocks['portfolio-video']['attachment'][0]['url']}}" type="{{$blocks['portfolio-video']['attachment'][0]['mime']}}">
                     </video>
                 </div>
             </div>

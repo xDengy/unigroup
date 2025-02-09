@@ -31,7 +31,7 @@
                             <img src="{{asset('imgs/bannerStrokes.svg')}}" alt="">
                         </div>
                         <div class="container">
-                            <div class="swiper">
+                            <div class="swiper about-main-swiper">
                                 <div class="swiper-wrapper">
                                     @foreach($blocks['about']['attachment'] as $attachment)
                                         <div class="swiper-slide">

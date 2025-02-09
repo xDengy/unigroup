@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         centeredSlides: false,
         loop: true,
         slideToClickedSlide: true,
-
+        autoHeight: true,
     });
 
     const portfolioSwiper = new Swiper('.page-portfolio .swiper', {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         centeredSlides: false,
         loop: true,
         slideToClickedSlide: true,
-
+        autoHeight: true,
         navigation: {
             nextEl: ".portfolio-swiper-button-next",
             prevEl: ".portfolio-swiper-button-prev",
@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         centeredSlides: false,
         loop: true,
         slideToClickedSlide: true,
-
         navigation: {
             nextEl: ".portfolio-swiper-button-next",
             prevEl: ".portfolio-swiper-button-prev",
@@ -71,9 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
         centeredSlides: false,
         loop: true,
         slideToClickedSlide: true,
-
+        autoHeight: true,
         pagination: {
-            el: '.swiper-pagination',
+            el: 'section.projects .swiper-pagination',
             type: 'bullets',
             clickable: true,
         },
@@ -88,11 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
         centeredSlides: false,
         loop: true,
         slideToClickedSlide: true,
-
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'bullets',
-            clickable: true,
+        autoHeight: true,
+        navigation: {
+            nextEl: ".reviews .swiper-navigation .swiper-button-next",
+            prevEl: ".reviews .swiper-navigation .swiper-button-prev",
         },
         breakpoints: {
             768: {
@@ -113,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
         centeredSlides: false,
         loop: true,
         slideToClickedSlide: true,
-
+        autoHeight: true,
         pagination: {
-            el: '.swiper-pagination',
+            el: '.about-wrapper-bottom.swiper-block .swiper-pagination',
             type: 'bullets',
             clickable: true,
         },
@@ -130,9 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
         centeredSlides: false,
         loop: true,
         slideToClickedSlide: true,
-
         pagination: {
-            el: '.swiper-pagination',
+            el: '.page-about .swiper-pagination',
             type: 'bullets',
             clickable: true,
         },
@@ -165,7 +162,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let rentArrows = document.querySelectorAll('.rent-block-arrow');
     for (let i = 0; i < rentArrows.length; i++) {
         rentArrows[i].addEventListener('click', () => {
-            rentArrows[i].closest('.rent-block-item').classList.toggle('show')
+            let item = rentArrows[i].closest('.rent-block-item');
+            let itemBottom = item.querySelector('.rent-block-item-bottom');
+            let maxHeight = itemBottom.scrollHeight + 200;
+            // itemBottom.setAttribute('maxHeight', maxHeight.toString());
+
+            console.log(item, maxHeight, item.classList.contains('show'))
+            if (item.classList.contains('show')) {
+                itemBottom.style.maxHeight = '';
+            } else {
+                itemBottom.style.maxHeight = maxHeight.toString() + 'px';
+            }
+
+            item.classList.toggle('show');
         })
     }
 
@@ -230,4 +239,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     Fancybox.Fancybox.bind(".fancybox", {});
+
+    let reviews = document.querySelectorAll('.review');
+    let reviewPopup = document.querySelector('.review-popup')
+    let reviewPopupShadow = document.querySelector('.review-popup .review-popup-shadow');
+    let reviewPopupClose = document.querySelector('.review-popup .review-popup-close');
+    let reviewPopupTitle = document.querySelector('.review-popup .review-popup-title')
+    let reviewPopupText = document.querySelector('.review-popup .review-popup-text')
+    if (reviewPopup) {
+        reviewPopupShadow.addEventListener('click', () => {
+            reviewPopup.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        reviewPopupClose.addEventListener('click', () => {
+            reviewPopup.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        for (let i = 0; i < reviews.length; i++) {
+            let btn = reviews[i].querySelector('.review-text-btn')
+            btn.addEventListener('click', () => {
+                document.body.style.overflow = 'hidden';
+                reviewPopup.classList.add('active');
+                reviewPopupTitle.textContent = reviews[i].querySelector('.review-title').textContent
+                reviewPopupText.textContent = reviews[i].querySelector('.review-text').textContent
+            })
+        }
+    }
 })
